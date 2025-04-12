@@ -242,7 +242,7 @@ a:hover {
 
     .menu-toggle {
         display: block;
-        padding-right: 2rem;
+        margin-right: 2rem;
     }
 
     .qr-link-wrapper {
