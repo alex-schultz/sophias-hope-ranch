@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+/* CTA Banner */
+.cta-banner {
+    background: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.cta-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.cta-banner p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+h1, h2 {
+    margin-bottom: 1rem;
+}
+
+ul {
+    margin-left: 1rem;
+}
+
+.btn-primary {
+    background-color: #ffb703;
+    color: #003049;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ffaa00;
+}
+
+a {
+    color: #0077b6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.paragraph-spacing {
+    padding-bottom: 1rem;
+}
+
+/* Layout Containers */
+.container {
+    width: 90%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.section {
+    padding: 60px 0;
+}
+
+.anchor-offset {
+    scroll-margin-top: 126px;
+}
+
+.bg-light {
+    background-color: #f1f1f1;
+}
+
+/* Header / Nav */
+.site-header {
+    background-color: #004b6b;
+    color: white;
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+}
+
+.site-logo {
+    height: 126px;
+    position: absolute;
+    left: 24px;
+    top: 0;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.nav-links a {
+    color: white;
+    font-weight: bold;
+}
+
+/* QR Donation */
+.qr-code {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    width: 220px;
+    height: 220px;
+}
+
+.qr-link {
+    display: inline-block;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #002d3a;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+/* Menu */
+.menu-toggle .menu-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.menu-icon::before {
+    content: "\2630"; /* ☰ */
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle.open .menu-icon::before {
+    content: "\2715"; /* ✕ */
+}
+
+.menu-toggle.open .menu-icon {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 0 25px 0;
+        gap: 30px;
+    }
+
+    .site-logo {
+        height: 80px;
+        left: 0;
+        margin: 0 0 0 2rem;
+        padding: 4px;
+        border-radius: 8px;
+    }
+
+    .qr-code {
+        width: 120px;
+        height: 120px;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        padding-right: 2rem;
+    }
+
+    .qr-link-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-wrapper {
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.3s ease;
+        flex-direction: column;
+        align-items: center;
+        background-color: #004b6b;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: 0;
+    }
+
+    .nav-wrapper.active {
+        max-height: 500px;
+    }
+}
