@@ -80,7 +80,7 @@ a:hover {
 }
 
 .anchor-offset {
-    scroll-margin-top: 126px;
+    scroll-margin-top: 96px;
 }
 
 .bg-light {
@@ -231,10 +231,6 @@ a:hover {
         }
     }
 
-    .anchor-offset {
-        scroll-margin-top: 112px;
-    }
-
     .site-logo {
         height: 80px;
         border-radius: 8px;
@@ -276,7 +272,7 @@ a:hover {
         background-color: #004b6b;
         width: 100%;
         position: absolute;
-        top: 112px;
+        top: 96px;
         left: 0;
     }
 
