@@ -11,23 +11,28 @@
     <meta property="og:title" content="Sophia's Hope Ranch"/>
     <meta property="og:description"
           content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma."/>
-    <meta property="og:image" content="https://www.sophiashoperanch.org/assets/og-image-min.webp"/>
+    <meta property="og:image" content="https://www.sophiashoperanch.org/assets/og-image.webp"/>
     <meta property="og:url" content="https://www.sophiashoperanch.org"/>
     <meta property="og:type" content="website"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Sophia's Hope Ranch"/>
     <meta name="twitter:description"
           content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma."/>
-    <meta name="twitter:image" content="https://www.sophiashoperanch.org/assets/og-image-min.webp"/>
+    <meta name="twitter:image" content="https://www.sophiashoperanch.org/assets/og-image.webp"/>
     <link rel="canonical" href="https://www.sophiashoperanch.org/"/>
     <title>Sophia's Hope Ranch</title>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.webp"/>
 </head>
 <body>
 <header class="site-header">
-    <div class="container nav-container">
+    <div class="nav-container">
         <a href="#home" class="logo-link">
-            <img src="assets/logo-min.webp" alt="Sophia’s Hope Ranch Logo" class="site-logo"/>
+            <img src="assets/logo-min.webp"
+                 alt="Sophia’s Hope Ranch Logo"
+                 class="site-logo"
+                 height="80px"
+                 width="80px"/>
         </a>
         <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
             <span class="menu-icon"></span>
@@ -41,6 +46,20 @@
                     <li><a href="#healing">Pillars of Healing</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
                     <li><a href="#contact">Contact Us</a></li>
+                    <li class="mobile-nav-links">
+                        <a href="https://www.facebook.com/profile.php?id=61565293413895" target="_blank">
+                            <img src="assets/icons/facebook.webp"
+                                 alt="Facebook logo"
+                                 class="social-icon"
+                                 loading="lazy">
+                        </a>
+                        <a href="https://www.instagram.com/sophiashoperanch" target="_blank">
+                            <img src="assets/icons/instagram.webp"
+                                 alt="Instagram logo"
+                                 class="social-icon"
+                                 loading="lazy">
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -88,6 +107,7 @@
                                 class="qr-code"
                                 width="132"
                                 height="132"
+                                loading="lazy"
                         />
                     </a>
                 </div>
@@ -286,13 +306,19 @@
                 <div class="social-links">
                     <a href="https://www.facebook.com/profile.php?id=61565293413895" target="_blank">
                         <div class="social-alignment">
-                            <img src="assets/icons/facebook.png" alt="Facebook logo" class="social-icon">
+                            <img src="assets/icons/facebook.webp"
+                                 alt="Facebook logo"
+                                 class="social-icon"
+                                 loading="lazy">
                             <span>Facebook</span>
                         </div>
                     </a>
                     <a href="https://www.instagram.com/sophiashoperanch" target="_blank">
                         <div class="social-alignment">
-                            <img src="assets/icons/instagram.png" alt="Instagram logo" class="social-icon">
+                            <img src="assets/icons/instagram.webp"
+                                 alt="Instagram logo"
+                                 class="social-icon"
+                                 loading="lazy">
                             <span>Instagram</span>
                         </div>
                     </a>
@@ -310,12 +336,23 @@
 <script>
     const toggle = document.querySelector('.menu-toggle');
     const navWrapper = document.querySelector('.nav-wrapper');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
     toggle.addEventListener('click', () => {
         navWrapper.classList.toggle('active');
         toggle.classList.toggle('open');
         const expanded = toggle.getAttribute('aria-expanded') === 'true';
         toggle.setAttribute('aria-expanded', String(!expanded));
+    });
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navWrapper.classList.contains('active')) {
+                navWrapper.classList.remove('active');
+                toggle.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
     });
 </script>
 </body>
