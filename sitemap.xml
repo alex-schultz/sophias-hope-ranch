@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
     <url>
-        <loc>https://www.sophiashoperanch.org/</loc>
-        <priority>1.0</priority>
+        <loc>https://sophiashoperanch.org/</loc>
     </url>
-
     <url>
-        <loc>https://www.sophiashoperanch.org/#home</loc>
-        <priority>0.9</priority>
+        <loc>https://sophiashoperanch.org/#home</loc>
     </url>
-
     <url>
-        <loc>https://www.sophiashoperanch.org/#about</loc>
-        <priority>0.8</priority>
+        <loc>https://sophiashoperanch.org/#about</loc>
     </url>
-
     <url>
-        <loc>https://www.sophiashoperanch.org/#mission</loc>
-        <priority>0.8</priority>
+        <loc>https://sophiashoperanch.org/#programs</loc>
     </url>
-
     <url>
-        <loc>https://www.sophiashoperanch.org/#services</loc>
-        <priority>0.8</priority>
+        <loc>https://sophiashoperanch.org/#healing</loc>
     </url>
-
     <url>
-        <loc>https://www.sophiashoperanch.org/#workshops</loc>
-        <priority>0.7</priority>
+        <loc>https://sophiashoperanch.org/#testimonials</loc>
     </url>
-
+    <url>
+        <loc>https://sophiashoperanch.org/#contact</loc>
+    </url>
 </urlset>
