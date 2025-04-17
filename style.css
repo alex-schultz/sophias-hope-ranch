@@ -17,6 +17,7 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
+    margin-bottom: 2rem;
 }
 
 .cta-heading {
@@ -59,6 +60,10 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+.extra-small-bottom-spacing {
+    padding-bottom: 6px;
 }
 
 .small-bottom-spacing {
@@ -164,10 +169,11 @@ a:hover {
 
 /* Footer */
 .site-footer {
-    background-color: #002d3a;
+    background-color: #004b6b;
     color: white;
     text-align: center;
     padding: 30px 0;
+    margin-top: 5rem;
 }
 
 /* Menu */
