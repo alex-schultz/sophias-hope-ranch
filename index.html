@@ -23,12 +23,10 @@
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
       script-src 'self' https://cdnjs.cloudflare.com https://www.youtube.com;
-      style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
-      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+      style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'sha256-GlxMfbDl73kN2FaXl+u9fQBtHyzLwC2evwinuyKmgXM=' 'sha256-lqaUTp4AFIo+P2WUs81N56QrKUfr0hkCPnj7cX5YE1I=';      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
       img-src 'self' data: https://i.ytimg.com;
       connect-src 'self';
       frame-src https://www.youtube.com https://www.youtube-nocookie.com;
-      frame-ancestors 'none';
       object-src 'none';
       base-uri 'self';
       form-action 'self';
@@ -464,7 +462,7 @@
                             are more
                             connected as a family and closer to God.</p>
                     </div>
-                    <div class="testimonial-author" style="padding-top: 1.5rem;">
+                    <div class="testimonial-author">
                         <div>
                             <p>Sarah M.</p>
                             <span>Mother of 2</span>
@@ -611,7 +609,7 @@
                 <p>
                     If you're experiencing a mental health crisis, call:
                     <strong>
-                        <a href="tel:988" style="color: white;" aria-label="Call 988 for crisis support">988</a>
+                        <a class="national-hotline-link" href="tel:988" aria-label="Call 988 for crisis support">988</a>
                     </strong>
                 </p>
                 <p>National Suicide Prevention Lifeline</p>

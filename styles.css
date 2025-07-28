@@ -798,6 +798,10 @@ section {
     transition: color 0.3s ease;
 }
 
+.national-hotline-link {
+    color: white;
+}
+
 .footer-section ul li a:hover,
 .footer-section ul li a:focus {
     color: white;
