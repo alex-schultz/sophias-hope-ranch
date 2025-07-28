@@ -23,7 +23,8 @@
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
       script-src 'self' https://cdnjs.cloudflare.com https://www.youtube.com;
-      style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'sha256-GlxMfbDl73kN2FaXl+u9fQBtHyzLwC2evwinuyKmgXM=' 'sha256-lqaUTp4AFIo+P2WUs81N56QrKUfr0hkCPnj7cX5YE1I=';      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+      style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'sha256-GlxMfbDl73kN2FaXl+u9fQBtHyzLwC2evwinuyKmgXM=' 'sha256-lqaUTp4AFIo+P2WUs81N56QrKUfr0hkCPnj7cX5YE1I=';
+      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
       img-src 'self' data: https://i.ytimg.com;
       connect-src 'self';
       frame-src https://www.youtube.com https://www.youtube-nocookie.com;
@@ -96,7 +97,7 @@
                     <button class="btn btn-primary donate-mobile">Donate</button>
                 </li>
             </ul>
-            <button class="btn btn-primary donate-desktop">Donate</button>
+            <button class="btn btn-primary donate-desktop" type="button">Donate</button>
         </div>
     </nav>
 </header>
@@ -195,11 +196,11 @@
             <div class="about-text">
                 <h3>Board of Directors</h3>
                 <div class="board-grid">
-                    <div class="board-card" onclick="toggleBio(this)">
+                    <div class="board-card">
                         <img src="/assets/images/theresa-schultz.webp"
                              alt="Image of Theresa Schultz"
                              loading="lazy"
-                             class="board-img loaded">
+                             class="board-img loaded board-photo">
                         <h4>Theresa Schultz</h4>
                         <span class="accent serif">Founder</span>
                         <div class="board-bio">
@@ -218,11 +219,11 @@
                             </p>
                         </div>
                     </div>
-                    <div class="board-card" onclick="toggleBio(this)">
+                    <div class="board-card">
                         <img src="/assets/images/lisa-goff.webp"
                              alt="Image of Lisa Goff"
                              loading="lazy"
-                             class="board-img loaded">
+                             class="board-img loaded board-photo">
                         <h4>Lisa Goff</h4>
                         <div class="board-bio">
                             <p>Lisa is a retired pediatrician and loves spending time with her family. She is a
@@ -238,11 +239,11 @@
                         </div>
                     </div>
 
-                    <div class="board-card" onclick="toggleBio(this)">
+                    <div class="board-card">
                         <img src="/assets/images/amber-griffin.webp"
                              alt="Image of Amber Griffin-Colvin"
                              loading="lazy"
-                             class="board-img loaded">
+                             class="board-img loaded board-photo">
                         <h4>Amber Griffin-Colvin</h4>
                         <div class="board-bio">
                             <p>

@@ -103,6 +103,17 @@ document.querySelectorAll('.donate-desktop, .donate-mobile').forEach(btn => {
 });
 
 // Board Bios
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".board-card").forEach(img => {
+        img.addEventListener("click", () => toggleBio(img));
+        img.addEventListener("keydown", e => {
+            if (e.key === "Enter" || e.key === " ") {
+                toggleBio(img);
+                e.preventDefault();
+            }
+        });
+    });
+});
 const toggleBio = (img) => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const card = img.closest('.board-card');
