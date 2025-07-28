@@ -41,7 +41,7 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- Fonts -->
-    <link href="google-fonts.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -64,7 +64,7 @@
                          height="80px"
                          width="80px"/>
                 </a>
-                <span class="nav-text">Sophia's Hope Ranch</span>
+                <span class="nav-text accent serif">Sophia's Hope Ranch</span>
             </div>
 
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -79,7 +79,9 @@
                 <li role="none"><a href="#services" role="menuitem">Services</a></li>
                 <li role="none"><a href="#programs" role="menuitem">Programs</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
-                <button class="btn btn-primary donate-mobile">Donate</button>
+                <li role="none">
+                    <button class="btn btn-primary donate-mobile">Donate</button>
+                </li>
             </ul>
             <button class="btn btn-primary donate-desktop">Donate</button>
         </div>
@@ -100,7 +102,8 @@
             </p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary" aria-label="Get help today">Get Help Today</a>
-                <a href="#about" class="btn btn-secondary" aria-label="Learn more about Sophia's Hope Ranch">Learn More</a>
+                <a href="#about" class="btn btn-secondary" aria-label="Learn more about Sophia's Hope Ranch">Learn
+                    More</a>
             </div>
         </div>
     </section>
@@ -109,7 +112,7 @@
     <section id="about" class="about" aria-labelledby="about-heading">
         <div class="container">
             <div class="section-header">
-                <h2 id="about-heading">About Sophia's Hope Ranch</h2>
+                <h2 id="about-heading accent serif">About Sophia's Hope Ranch</h2>
                 <p class="section-subtitle">Sophia’s Hope Ranch is a Christ-centered ministry dedicated to healing
                     families impacted by attachment disruptions and trauma. We foster secure attachments through faith
                     in Jesus, the ultimate Healer, and employ innovative, evidence-based practices to promote
@@ -126,52 +129,52 @@
                         attachment disruption and trauma, helping families rebuild trust, connection, and hope.
                     </p>
 
+                    <p class="accent serif stats-label">In just the past 12 months...</p>
                     <div class="stats">
                         <div class="stat-item">
-                            <span class="stat-number" data-target="196">0</span>
-                            <span class="stat-label">Families Helped</span>
+                            <span class="stat-number" data-target="10">0</span>
+                            <span class="stat-label">Children served</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="20">0</span>
-                            <span class="stat-label">Years of Experience</span>
+                            <span class="stat-number" data-target="56">0</span>
+                            <span class="stat-label">Adults Helped</span>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number" data-target="95">0</span>
-                            <span class="stat-label">Success Rate %</span>
+                            <span class="stat-number" data-target="6">0</span>
+                            <span class="stat-label">Couples Aided</span>
                         </div>
+                        <div class="stat-item">
+                            <div class="stat-percentage">
+                                <span class="stat-number" data-target="92">0</span><span>%</span>
+                            </div>
+                            <span class="stat-label">Reduction in Anxiety and Depression <sup>1</sup></span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-percentage">
+                                <span class="stat-number" data-target="100">0</span><span>%</span>
+                            </div>
+                            <span class="stat-label">improvement on suicidal thoughts <sup>2</sup></span>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-percentage">
+                                <span class="stat-number" data-target="92">0</span><span>%</span>
+                            </div>
+                            <span class="stat-label">of Children Improved Behavior <sup>3</sup></span>
+                        </div>
+                    </div>
+                    <div class="index">
+                        <span class="super-script-explanation"><sup>1</sup> 92% of adults reported a <strong>significant reduction in symptoms</strong> of anxiety and depression.</span>
+                        <span class="super-script-explanation"><sup>2</sup> 100% of those struggling with suicidal thoughts no longer experience them after 6 months of care.</span>
+                        <span class="super-script-explanation"><sup>3</sup> 92% of children showed increased emotional regulation, secure attachment, and engagement in school.</span>
                     </div>
                 </div>
 
                 <div class="about-image">
                     <img src="/assets/images/hero-image.webp"
                          class="loaded"
+                         loading="lazy"
                          alt="Woman and her child walking in the grass with a sunset in the background"
                          draggable="false">
-                </div>
-            </div>
-
-            <!-- About Founder -->
-            <div class="about-grid founder">
-                <h3 class="founder-header founder-header-mobile">Founder: Theresa Schultz</h3>
-                <div class="founder-image">
-                    <img src="/assets/images/theresa-schultz.webp"
-                         class="loaded"
-                         alt="Woman and her child walking in the grass with a sunset in the background"
-                         draggable="false">
-                </div>
-                <div class="about-text">
-                    <h3 class="founder-header founder-header-desktop">Founder: Theresa Schultz</h3>
-                    <p>
-                        I'm Theresa Schultz, Christ-follower, mother, and clinical therapist. With five grown children
-                        (two adopted, three biological) and five amazing grandchildren, my heart has always been drawn
-                        to caring for children and families in need.
-                        For over 30 years, I've served in many roles - foster mom, CASA volunteer, board member, and
-                        therapist, each one deepening my passion for helping children heal. As a trauma and attachment
-                        specialist, and as a mom to a daughter who experienced attachment disruption, I’ve witnessed the
-                        heartbreaking struggle to build safe, connected relationships. Sophia’s Hope Ranch was born from
-                        both the pain and the hope of that journey, a reflection of my lifelong calling to help families
-                        heal.
-                    </p>
                 </div>
             </div>
 
@@ -180,14 +183,38 @@
                 <h3>Board of Directors</h3>
                 <div class="board-grid">
                     <div class="board-card" onclick="toggleBio(this)">
+                        <img src="/assets/images/theresa-schultz.webp"
+                             alt="Image of Theresa Schultz"
+                             loading="lazy"
+                             class="board-img loaded">
+                        <h4>Theresa Schultz</h4>
+                        <span class="accent serif">Founder</span>
+                        <div class="board-bio">
+                            <p>
+                                Theresa is a Christ-follower, mother, and clinical therapist. With five grown children
+                                (two adopted, three biological) and five amazing grandchildren, she has always been
+                                drawn to caring for children and families in need.
+                            </p>
+                            <p class="italic">
+                                "For over 30 years, I've served in many roles - foster mom, CASA volunteer, board
+                                member, and therapist, each one deepening my passion for helping children heal. As a
+                                trauma and attachment specialist, and as a mom to a daughter who experienced attachment
+                                disruption, I’ve witnessed the heartbreaking struggle to build safe, connected
+                                relationships. Sophia’s Hope Ranch was born from both the pain and the hope of that
+                                journey, a reflection of my lifelong calling to help families heal."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="board-card" onclick="toggleBio(this)">
                         <img src="/assets/images/lisa-goff.webp"
                              alt="Image of Lisa Goff"
+                             loading="lazy"
                              class="board-img loaded">
                         <h4>Lisa Goff</h4>
                         <div class="board-bio">
-                            <p>Lisa is a retired pediatrician and loves spending time with her family. She is prominent
-                                member of the Boerne community.</p>
-                            <p>
+                            <p>Lisa is a retired pediatrician and loves spending time with her family. She is a
+                                prominent member of the Boerne community.</p>
+                            <p class="italic">
                                 "As an adoptive mom of five children, I have seen firsthand the struggles that arise
                                 from attachment disruption and the impacts it has on the entire family system.
                                 I understand the limitations of the publicly available support networks for children and
@@ -199,13 +226,25 @@
                     </div>
 
                     <div class="board-card" onclick="toggleBio(this)">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"
+                        <img src="/assets/images/amber-griffin.webp"
                              alt="Image of Amber Griffin-Colvin"
+                             loading="lazy"
                              class="board-img loaded">
                         <h4>Amber Griffin-Colvin</h4>
                         <div class="board-bio">
-                            <p>Amber has extensive experience in community outreach and ministry leadership, and plays a
-                                key role in expanding Sophia’s Hope Ranch’s impact across Texas.</p>
+                            <p>
+                                Amber is a devoted wife, mother, and proud grandmother whose deep love for people shines
+                                through in everything she does. As a successful and hard-working realtor, she is known
+                                for serving her clients with integrity, compassion, and excellence. Beyond her
+                                professional life, Amber is a generous and active member of the community with a heart
+                                for philanthropy.
+                            </p>
+                            <p>
+                                Her passion for children and her faith in Jesus makes her a natural fit for the mission
+                                of Sophia’s Hope Ranch. Amber brings a spirit of encouragement, service, and wisdom to
+                                the board, helping to ensure the vision of creating a healing and hope-filled
+                                environment for families becomes a reality.
+                            </p>
                         </div>
                     </div>
 
@@ -216,12 +255,28 @@
         </div>
     </section>
 
+    <section>
+        <div class="section-header">
+            <h2 class="accent serif">Adoption Story</h2>
+            <p class="section-subtitle">Learn about a local family's adoption story.</p>
+        </div>
+        <div class="container embedded-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/cyucGXUa17Q?si=o_tL-ndCvWqg5Ck1"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section id="services" class="services" aria-labelledby="services-heading">
         <div class="container">
             <div class="section-header">
-                <h2 id="services-heading">Our Services</h2>
-                <p class="section-subtitle">Comprehensive care tailored to your family's unique needs</p>
+                <h2 id="services-heading accent serif">Our Services</h2>
+                <p class="section-subtitle">Comprehensive care tailored to your family's unique needs. Our mission is to
+                    transform families affected by attachment disruptions through faith-based, individualized care.
+                    Recognizing that therapy isn’t one-size-fits-all, we employ diverse, evidence-based practices to
+                    nurture healing, connection, and well-being.</p>
             </div>
 
             <div class="services-grid">
@@ -229,17 +284,18 @@
                     <div class="service-icon">
                         <i class="fas fa-brain" aria-hidden="true"></i>
                     </div>
-                    <h3>Trauma Recovery</h3>
-                    <p>Comprehensive trauma-informed care using proven therapeutic methods to promote healing and
-                        resilience.</p>
+                    <h3 class="accent serif">Trauma Recovery</h3>
+                    <p>Trust-Based Relational Intervention (TBRI) for vulnerable children who have experienced
+                        adversity, toxic stress, or trauma. Employs evidence-based strategies to
+                        build trust and foster healthy relationships.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-person" aria-hidden="true"></i>
                     </div>
-                    <h3>Individual Therapy</h3>
-                    <p>Tailored sessions for personal healing and growth. Available for the child, parents, and
+                    <h3 class="accent serif">Individual Therapy</h3>
+                    <p>Tailored sessions for personal healing and growth; available for children, parents, and
                         siblings.</p>
                 </div>
 
@@ -247,7 +303,7 @@
                     <div class="service-icon">
                         <i class="fas fa-people-group" aria-hidden="true"></i>
                     </div>
-                    <h3>Family Therapy</h3>
+                    <h3 class="accent serif">Family Therapy</h3>
                     <p>Strengthening family bonds and addressing collective challenges through personalized therapy
                         sessions.</p>
                 </div>
@@ -256,26 +312,56 @@
                     <div class="service-icon">
                         <i class="fas fa-heart" aria-hidden="true"></i>
                     </div>
-                    <h3>Marriage Counseling</h3>
-                    <p>Reviving intimacy, building teamwork, and realizing your family's vision.</p>
+                    <h3 class="accent serif">Couples Therapy</h3>
+                    <p>Reviving intimacy, building teamwork, and realizing your family's vision. Strong focus on
+                        communication and recognizing and understanding each other's perspective.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-praying-hands" aria-hidden="true"></i>
+                        <i class="fas fa-horse" aria-hidden="true"></i>
                     </div>
-                    <h3>Faith-Based Counseling</h3>
-                    <p>Integrating spiritual care with clinical expertise to provide holistic healing for mind, body,
-                        and spirit.</p>
+                    <h3 class="accent serif">Equine Therapy</h3>
+                    <p>Leverage unique sensitivity of horses to facilitate emotional, mental, and physical
+                        well-being. Strengthens trust and emotional resilience via human-horse
+                        interactions.</p>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <i class="fas fa-cube" aria-hidden="true"></i>
                     </div>
-                    <h3>Residential Care</h3>
-                    <p>Safe, nurturing residential environment where families can focus on healing in a supportive
-                        community.</p>
+                    <h3 class="accent serif">Play Therapy</h3>
+                    <p>Use children's natural medium of expression to help them communicate and resolve emotional or
+                        behavioral issues. Facilitates emotional expression and healing through guided play
+                        activities.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent serif">Expressive Arts Therapy</h3>
+                    <p>Integrates multiple artistic modalities, including visual arts, music, dance, drama, poetry, and
+                        storytelling to promote growth, development, and healing.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dna" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent serif">Workshop: Breaking General Curses</h3>
+                    <p>Addressing and overcoming patterns crossed through generations. We evaluate environmental and
+                        spiritual influences to break free of generational strongholds.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hands-holding-child" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent serif">Workshop: Parenting</h3>
+                    <p>Learn and develop new strategies for parenting. Connecting, empowering, and correcting are the
+                        main pillars for this workshop.</p>
                 </div>
             </div>
         </div>
@@ -285,8 +371,10 @@
     <section id="programs" class="programs" aria-labelledby="programs-heading">
         <div class="container">
             <div class="section-header">
-                <h2 id="programs-heading">Treatment Programs</h2>
-                <p class="section-subtitle">Structured programs designed for lasting transformation</p>
+                <h2 id="programs-heading" class="accent serif">Treatment Programs</h2>
+                <p class="section-subtitle">Families are our clients; not just an individual. Our structured programs
+                    are designed for lasting transformation, so individualized treatment plans are developed for all
+                    members of the family.</p>
             </div>
 
             <div class="programs-grid">
@@ -294,9 +382,10 @@
                     <img src="/assets/images/girl-hugging-horse.webp"
                          alt="Girl hugging a horse"
                          class="loaded"
+                         loading="lazy"
                          draggable="false">
                     <div class="program-content">
-                        <h3>Intensive Outpatient Program</h3>
+                        <h3 class="accent serif">Intensive Outpatient Program</h3>
                         <p>For children ages 2 and up, offering comprehensive support to address attachment and trauma
                             while allowing them to remain in their home environment.</p>
                         <ul>
@@ -312,9 +401,10 @@
                     <img src="/assets/images/boy-hugging-horse.webp"
                          alt="Boy hugging a horse"
                          class="loaded"
+                         loading="lazy"
                          draggable="false">
                     <div class="program-content">
-                        <h3>Inpatient Program</h3>
+                        <h3 class="accent serif">Inpatient Program</h3>
                         <p>For children ages 5-17, providing immersive, 24/7 care in a supportive, therapeutic
                             environment. Focuses on deep healing and personal growth, helping children navigate their
                             challenges while engaging in a structured, faith-centered recovery process.</p>
@@ -334,20 +424,20 @@
     <section class="testimonials" aria-labelledby="testimonials-heading">
         <div class="container">
             <div class="section-header">
-                <h2 id="testimonials-heading">Stories of Hope</h2>
-                <p class="section-subtitle">Real families, real transformation</p>
+                <h2 id="testimonials-heading" class="accent serif">Stories of Hope</h2>
+                <p class="section-subtitle">Real families, real transformation.</p>
             </div>
 
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>Sophia's Hope Ranch has transformed our family in ways we never thought
+                        <p class="italic">Sophia's Hope Ranch has transformed our family in ways we never thought
                             possible. The combination of
                             therapies and spiritual guidance has given us new hope and healing.</p>
                     </div>
                     <div class="testimonial-author">
                         <div>
-                            <p>The Johnson Family</p>
+                            <p class="accent">The Johnson Family</p>
                             <span>Family of four</span>
                         </div>
                     </div>
@@ -355,26 +445,14 @@
 
                 <div class="testimonial-card">
                     <div class="testimonial-content">
-                        <p>The workshops were eye-opening and helped us break free from old patterns. We are more
+                        <p class="italic">The workshops were eye-opening and helped us break free from old patterns. We
+                            are more
                             connected as a family and closer to God.</p>
                     </div>
-                    <div class="testimonial-author">
+                    <div class="testimonial-author" style="padding-top: 1.5rem;">
                         <div>
                             <p>Sarah M.</p>
                             <span>Mother of 2</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        <p>Theresa at Sophia's Hope Ranch truly cares. She walked alongside us through our darkest
-                            moments and helped us find light again.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <div>
-                            <p>Jennifer L.</p>
-                            <span>Single Mother</span>
                         </div>
                     </div>
                 </div>
@@ -386,13 +464,13 @@
     <section id="contact" class="contact" aria-labelledby="contact-heading">
         <div class="container">
             <div class="section-header">
-                <h2 id="contact-heading">Get Help Today</h2>
-                <p class="section-subtitle">Take the first step toward healing and hope</p>
+                <h2 id="contact-heading" class="accent serif">Get Help Today</h2>
+                <p class="section-subtitle">Take the first step toward healing and hope.</p>
             </div>
 
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>Contact Information</h3>
+                    <h3 class="accent serif">Contact Information</h3>
                     <div class="contact-item">
                         <i class="fas fa-phone" aria-hidden="true"></i>
                         <div>
@@ -411,51 +489,49 @@
                     </div>
 
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <div>
-                            <h4>Address</h4>
-                            <address>
-                                123 Hope Ranch Road<br>
-                                Peaceful Valley, TX 75001
-                            </address>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
                         <i class="fas fa-clock" aria-hidden="true"></i>
                         <div>
                             <h4>Hours</h4>
-                            <p>24/7 Crisis Support Available<br>Office: Mon-Fri 8AM-6PM</p>
+                            <p>Office: Mon-Fri 8AM-6PM</p>
                         </div>
                     </div>
                 </div>
 
                 <form class="contact-form" aria-labelledby="contact-form-heading">
-                    <h3 id="contact-form-heading">Send Us a Message</h3>
+                    <h3 id="contact-form-heading" class="accent serif">Send Us a Message</h3>
+                    <p class="form-description">Pressing 'Send Message' will automatically populate an email with the
+                        form contents, but you will still need to send the email.</p>
 
                     <div class="form-group">
                         <label for="name">Full Name <span class="required">*</span></label>
-                        <input type="text" id="name" name="name" required aria-required="true">
+                        <input type="text" id="name" name="name" required aria-required="true" placeholder="First Last">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email Address <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required aria-required="true">
+                        <input type="email" id="email" name="email" required aria-required="true"
+                               placeholder="janedoe@example.com">
                     </div>
 
                     <div class="form-group">
                         <label for="phone">Phone Number <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" maxlength="14" required aria-required="true">
+                        <input type="tel" id="phone" name="phone"
+                               maxlength="14"
+                               placeholder="(210) 123-1234"
+                               pattern="\(\d{3}\) \d{3}-\d{4}"
+                               inputmode="numeric"
+                               required aria-required="true">
                     </div>
 
                     <div class="form-group">
                         <label for="subject">Subject <span class="required">*</span></label>
                         <select id="subject" name="subject" required aria-required="true">
                             <option value="">Please select...</option>
-                            <option value="general">General Information</option>
-                            <option value="admission">Admission Inquiry</option>
-                            <option value="crisis">Crisis Support</option>
-                            <option value="insurance">Insurance Questions</option>
+                            <option value="General Information">General Information</option>
+                            <option value="Admission Inquiry">Admission Inquiry</option>
+                            <option value="Crisis Support">Crisis Support</option>
+                            <option value="Insurance Question">Insurance Question</option>
+                            <option value="Sponsorship">Donations / Sponsorship / Partnership</option>
                         </select>
                     </div>
 
@@ -481,6 +557,7 @@
                     <img src="assets/horse.webp"
                          alt="Sophia’s Hope Ranch Logo"
                          class="site-logo loaded"
+                         loading="lazy"
                          height="75px"
                          width="75px"/>
                     <span>Sophia's Hope Ranch</span>
@@ -489,11 +566,8 @@
                 <div class="social-links">
                     <a href="https://www.facebook.com/profile.php?id=61565293413895" aria-label="Follow us on Facebook"><i
                             class="fab fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
                     <a href="https://www.instagram.com/sophiashoperanch" aria-label="Follow us on Instagram"><i
                             class="fab fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#" aria-label="Connect with us on LinkedIn"><i class="fab fa-linkedin"
-                                                                            aria-hidden="true"></i></a>
                 </div>
             </div>
 

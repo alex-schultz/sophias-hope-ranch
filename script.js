@@ -8,7 +8,7 @@ navToggle.addEventListener('click', () => {
 
     // Update ARIA attribute
     const isExpanded = navMenu.classList.contains('active');
-    navToggle.setAttribute('aria-expanded', isExpanded);
+    navToggle.setAttribute('aria-expanded', isExpanded.toString());
 });
 
 // Close mobile menu when clicking on a link
@@ -162,6 +162,26 @@ fadeElements.forEach(element => {
     fadeObserver.observe(element);
 });
 
+// Phone validation
+document.getElementById("phone").addEventListener("input", function (e) {
+    let input = e.target;
+    let numbers = input.value.replace(/\D/g, ""); // strip non-digits
+
+    if (numbers.length > 10) numbers = numbers.slice(0, 10); // limit to 10 digits
+
+    let formatted = numbers;
+
+    if (numbers.length > 6) {
+        formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3, 6)}-${numbers.slice(6)}`;
+    } else if (numbers.length > 3) {
+        formatted = `(${numbers.slice(0, 3)}) ${numbers.slice(3)}`;
+    } else if (numbers.length > 0) {
+        formatted = `(${numbers}`;
+    }
+
+    input.value = formatted;
+});
+
 // Form submission handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
@@ -209,13 +229,13 @@ if (contactForm) {
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("email").value.trim();
             const phone = document.getElementById("phone").value.trim();
-            const subject = document.getElementById("subject").value.trim();
+            let subject = document.getElementById("subject").value.trim();
+            subject = `Sophia's Hope Form - ${subject}`
             const message = document.getElementById("message").value.trim();
 
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`);
 
-            // FIXME email  sophiashoperanch@proton.me
-            const mailtoLink = `mailto:devschultz1@gmail.com?subject=${subject}&body=${body}`;
+            const mailtoLink = `mailto:sophiashoperanch@proton.me?subject=${encodeURIComponent(subject)}&body=${body}`;
 
             window.location.href = mailtoLink;
 
@@ -243,7 +263,7 @@ if (contactForm) {
             setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.style.background = '';
-            }, 3000);
+            }, 1000);
         }
     });
 }
