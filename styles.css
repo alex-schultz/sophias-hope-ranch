@@ -183,7 +183,7 @@ body {
     padding: 100px 20px 50px;
     position: relative;
     overflow: hidden;
-    background-image: url("/assets/images/hero-image-original.webp");
+    background-image: url("/assets/images/hero-image.webp");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

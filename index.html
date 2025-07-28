@@ -23,15 +23,16 @@
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
       script-src 'self' https://cdnjs.cloudflare.com https://www.youtube.com;
-      style-src 'self' https://fonts.googleapis.com;
-      font-src 'self' https://fonts.gstatic.com;
+      style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
       img-src 'self' data: https://i.ytimg.com;
       connect-src 'self';
       frame-src https://www.youtube.com https://www.youtube-nocookie.com;
       frame-ancestors 'none';
       object-src 'none';
       base-uri 'self';
-      form-action 'self';">
+      form-action 'self';
+">
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Sophia's Hope Ranch - Faith-Centered Therapy for Families">
@@ -72,7 +73,7 @@
         <div class="nav-container">
             <div class="logo">
                 <a href="#home" class="logo-link">
-                    <img src="assets/horse.webp"
+                    <img src="/assets/horse.webp"
                          alt="Sophia’s Hope Ranch Logo"
                          class="site-logo loaded"
                          height="80px"
@@ -184,7 +185,7 @@
                 </div>
 
                 <div class="about-image">
-                    <img src="/assets/images/hero-image.webp"
+                    <img src="/assets/images/woman-and-child.webp"
                          class="loaded"
                          loading="lazy"
                          alt="Woman and her child walking in the grass with a sunset in the background"
