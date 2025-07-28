@@ -105,7 +105,10 @@ document.querySelectorAll('.donate-desktop, .donate-mobile').forEach(btn => {
 // Board Bios
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".board-card").forEach(img => {
-        img.addEventListener("click", () => toggleBio(img));
+        img.addEventListener("click", () => {
+            console.log(`adding event listener to image ${img.getAttributeNames()}`);
+            toggleBio(img);
+        });
         img.addEventListener("keydown", e => {
             if (e.key === "Enter" || e.key === " ") {
                 toggleBio(img);
@@ -115,6 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 const toggleBio = (img) => {
+    console.log('toggleBio clicked with img', img);
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const card = img.closest('.board-card');
     if (isMobile) {
