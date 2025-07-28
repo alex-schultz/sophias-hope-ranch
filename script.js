@@ -106,7 +106,6 @@ document.querySelectorAll('.donate-desktop, .donate-mobile').forEach(btn => {
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".board-card").forEach(img => {
         img.addEventListener("click", () => {
-            console.log(`adding event listener to image ${img.getAttributeNames()}`);
             toggleBio(img);
         });
         img.addEventListener("keydown", e => {
@@ -118,7 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 const toggleBio = (img) => {
-    console.log('toggleBio clicked with img', img);
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const card = img.closest('.board-card');
     if (isMobile) {
