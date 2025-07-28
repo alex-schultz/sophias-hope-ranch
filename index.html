@@ -19,6 +19,20 @@
         document.head.appendChild(metaTag);
     </script>
 
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://cdnjs.cloudflare.com https://www.youtube.com;
+      style-src 'self' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https://i.ytimg.com;
+      connect-src 'self';
+      frame-src https://www.youtube.com https://www.youtube-nocookie.com;
+      frame-ancestors 'none';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';">
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Sophia's Hope Ranch - Faith-Centered Therapy for Families">
     <meta property="og:description"
