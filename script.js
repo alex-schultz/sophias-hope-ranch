@@ -95,13 +95,6 @@ document.querySelectorAll('.stat-number').forEach(counter => {
     counterObserver.observe(counter);
 });
 
-// Donation button
-document.querySelectorAll('.donate-desktop, .donate-mobile').forEach(btn => {
-    btn.addEventListener('click', () => {
-        window.location.href = "https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website";
-    });
-});
-
 // Board Bios
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".board-card").forEach(img => {
@@ -119,13 +112,23 @@ document.addEventListener("DOMContentLoaded", () => {
 const toggleBio = (img) => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const card = img.closest('.board-card');
+    card.classList.toggle('active');
     if (isMobile) {
         // Mobile accordion style
         document.querySelectorAll('.board-card').forEach(c => {
-            if (c !== card) c.classList.remove('open');
+            if (c !== card) {
+                c.classList.remove('open');
+                c.classList.remove('active');
+            }
         });
         card.classList.toggle('open');
     } else {
+        // Remove active toggle on other cards
+        document.querySelectorAll('.board-card').forEach(c => {
+            if (c !== card) {
+                c.classList.remove('active');
+            }
+        });
         // Desktop: extract bio and show it in a shared container
         const bio = card.querySelector('.board-bio');
         const bioContainer = document.getElementById('board-bio-desktop');

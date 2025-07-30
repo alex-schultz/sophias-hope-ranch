@@ -3,21 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sophia's Hope Ranch - Faith-Centered Treatment for Families</title>
+    <title>Sophia's Hope Ranch - Faith-Centered Therapy for Families</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma.">
+          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma. Individual and family therapy is available for all.">
     <meta name="keywords"
-          content="Sophia, hope, ranch, trauma treatment, attachment therapy, healing, family counseling, ranch, hope, recovery, therapy, Christian counseling">
+          content="Sophias, hope, ranch, sophia, sofia, therapy, counsel, counseling, residential care, equine therapy, trauma treatment, crisis intervention, attachment therapy, healing, family counseling, ranch, recovery, therapy, Christian counseling, couples">
     <meta name="author" content="Sophia's Hope Ranch">
-    <script>
-        const isProd = window.location.href.startsWith('https://sophiashoperanch.org');
-        const metaTag = document.createElement('meta');
-        metaTag.name = 'robots';
-        metaTag.content = isProd ? 'index, follow' : 'noindex, nofollow';
-        document.head.appendChild(metaTag);
-    </script>
 
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
@@ -31,12 +24,39 @@
       object-src 'none';
       base-uri 'self';
       form-action 'self';
-">
+    ">
+
+    <!-- Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "nonprofitStatus" : "Nonprofit501c3",
+            "name": "Sophia's Hope Ranch",
+            "url": "https://sophiashoperanch.org",
+            "logo": "https://sophiashoperanch.org/assets/horse.webp",
+            "description": "Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma. Services include Trust Based Relational Intervention, individual therapy, family therapy, couples therapy, play therapy, expressive arts therapy, and a multitude of personalized workshops designed for lasting transformation.",
+            "founder": "Theresa Schultz",
+            "areaServed": {
+                "@type": "AdministrativeArea",
+                "name": "Texas"
+            }
+        }
+    </script>
+
+    <!-- Robots -->
+    <script>
+        const isProd = window.location.href.startsWith('https://sophiashoperanch.org');
+        const metaTag = document.createElement('meta');
+        metaTag.name = 'robots';
+        metaTag.content = isProd ? 'index, follow' : 'noindex, nofollow';
+        document.head.appendChild(metaTag);
+    </script>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Sophia's Hope Ranch - Faith-Centered Therapy for Families">
     <meta property="og:description"
-          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma.">
+          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma.  Individual and family therapy is available for all.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sophiashoperanch.org">
     <meta property="og:image" content="/assets/og-image.webp">
@@ -45,14 +65,17 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sophia's Hope Ranch - Faith-Centered Treatment for Families">
     <meta name="twitter:description"
-          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma.">
+          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma. Individual and family therapy is available for all.">
     <meta name="twitter:image" content="/assets/og-image.webp">
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://sophiashoperanch.org/"/>
+
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
@@ -75,7 +98,7 @@
                 <a href="#home" class="logo-link">
                     <img src="/assets/horse.webp"
                          alt="Sophia’s Hope Ranch Logo"
-                         class="site-logo loaded"
+                         class="site-logo loaded no-border"
                          height="80px"
                          width="80px"/>
                 </a>
@@ -95,10 +118,17 @@
                 <li role="none"><a href="#programs" role="menuitem">Programs</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                 <li role="none">
-                    <button class="btn btn-primary donate-mobile">Donate</button>
+                    <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+                       class="btn btn-primary donate-mobile">
+                        Donate
+                    </a>
                 </li>
             </ul>
-            <button class="btn btn-primary donate-desktop" type="button">Donate</button>
+            <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+               class="btn btn-primary donate-desktop"
+               type="button">
+                Donate
+            </a>
         </div>
     </nav>
 </header>
@@ -109,9 +139,12 @@
     <section id="home" class="hero" aria-labelledby="hero-heading">
         <div class="hero-content">
             <h1 id="hero-heading" class="hero-title">
-                Healing Hearts, <span class="highlight">Restoring Hope</span>
+                Sophia's Hope Ranch
             </h1>
             <p class="hero-subtitle">
+                Healing Hearts, <span class="highlight">Restoring Hope</span>
+            </p>
+            <p class="hero-subtitle hero-subtitle-2">
                 A faith-centered treatment center helping families affected by attachment disruption and trauma find
                 healing and hope.
             </p>
@@ -209,7 +242,7 @@
                 <div class="board-grid">
                     <div class="board-card">
                         <img src="/assets/images/theresa-schultz.webp"
-                             alt="Image of Theresa Schultz"
+                             alt="Image of Theresa Schultz, founder of Sophia's Hope Ranch"
                              loading="lazy"
                              class="board-img loaded">
                         <h4>Theresa Schultz</h4>
@@ -232,7 +265,7 @@
                     </div>
                     <div class="board-card">
                         <img src="/assets/images/lisa-goff.webp"
-                             alt="Image of Lisa Goff"
+                             alt="Image of board member Lisa Goff"
                              loading="lazy"
                              class="board-img loaded">
                         <h4>Lisa Goff</h4>
@@ -252,7 +285,7 @@
 
                     <div class="board-card">
                         <img src="/assets/images/amber-griffin.webp"
-                             alt="Image of Amber Griffin-Colvin"
+                             alt="Image of board member Amber Griffin-Colvin"
                              loading="lazy"
                              class="board-img loaded">
                         <h4>Amber Griffin-Colvin</h4>
@@ -281,15 +314,17 @@
     </section>
 
     <section>
-        <div class="section-header">
-            <h2 class="accent serif">Adoption Story</h2>
-            <p class="section-subtitle">Learn about a local family's adoption story.</p>
-        </div>
-        <div class="container embedded-video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/cyucGXUa17Q?si=o_tL-ndCvWqg5Ck1"
-                    title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="accent serif">Adoption Story</h2>
+                <p class="section-subtitle">Learn about a local family's adoption story.</p>
+            </div>
+            <div class="container embedded-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/cyucGXUa17Q?si=o_tL-ndCvWqg5Ck1"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
         </div>
     </section>
 
@@ -342,14 +377,23 @@
                         communication and recognizing and understanding each other's perspective.</p>
                 </div>
 
-                <div class="service-card">
+                <div class="service-card coming-soon">
                     <div class="service-icon">
                         <i class="fas fa-horse" aria-hidden="true"></i>
                     </div>
-                    <h3 class="accent serif">Equine Therapy</h3>
-                    <p>Leverage unique sensitivity of horses to facilitate emotional, mental, and physical
-                        well-being. Strengthens trust and emotional resilience via human-horse
-                        interactions.</p>
+                    <h3 class="accent serif">Equine Therapy <span class="badge no-serif">Coming Soon</span></h3>
+                    <p class="mb">
+                        We're preparing a powerful therapeutic experience through horse-assisted care.
+                        Your support helps us bring this program to life.
+                    </p>
+                    <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+                       class="btn btn-primary"
+                       type="button">
+                        Support This Program
+                    </a>
+                    <!--                    <p>Leverage unique sensitivity of horses to facilitate emotional, mental, and physical-->
+                    <!--                        well-being. Strengthens trust and emotional resilience via human-horse-->
+                    <!--                        interactions.</p>-->
                 </div>
 
                 <div class="service-card">
@@ -422,14 +466,16 @@
                     </div>
                 </div>
 
-                <div class="program-card">
+                <div class="program-card coming-soon">
                     <img src="/assets/images/boy-hugging-horse.webp"
                          alt="Boy hugging a horse"
                          class="loaded"
                          loading="lazy"
                          draggable="false">
                     <div class="program-content">
-                        <h3 class="accent serif">Inpatient Program</h3>
+                        <h3 class="accent serif">
+                            Inpatient Program <span class="badge badge-locked no-serif">Coming Soon</span>
+                        </h3>
                         <p>For children ages 5-17, providing immersive, 24/7 care in a supportive, therapeutic
                             environment. Focuses on deep healing and personal growth, helping children navigate their
                             challenges while engaging in a structured, faith-centered recovery process.</p>
@@ -439,6 +485,15 @@
                             <li>Crisis intervention support</li>
                             <li>Equine Therapy</li>
                         </ul>
+
+                        <div class="help-launch">
+                            <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+                               class="btn btn-primary"
+                               role="button"
+                            >
+                                Help Launch This Program
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -524,8 +579,6 @@
 
                 <form class="contact-form" aria-labelledby="contact-form-heading">
                     <h3 id="contact-form-heading" class="accent serif">Send Us a Message</h3>
-                    <p class="form-description">Pressing 'Send Message' will automatically populate an email with the
-                        form contents, but you will still need to send the email.</p>
 
                     <div class="form-group">
                         <label for="name">Full Name <span class="required">*</span></label>
@@ -581,7 +634,7 @@
                 <div class="footer-logo">
                     <img src="assets/horse.webp"
                          alt="Sophia’s Hope Ranch Logo"
-                         class="site-logo loaded"
+                         class="site-logo loaded no-border"
                          loading="lazy"
                          height="75px"
                          width="75px"/>
