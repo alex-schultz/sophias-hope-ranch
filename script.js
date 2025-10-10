@@ -412,8 +412,9 @@ document.querySelectorAll('section[aria-labelledby]').forEach(section => {
     sectionObserver.observe(section);
 });
 
-// Donate button handler with mobile app detection
+// Consolidated DOMContentLoaded handler for donate buttons and flyer viewer
 document.addEventListener('DOMContentLoaded', () => {
+    // Donate button handler with mobile app detection
     const donateButtons = document.querySelectorAll('.donate-btn');
 
     donateButtons.forEach(button => {
@@ -450,5 +451,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Flyer view handler - prevents auto-download on Windows
+    const flyerLink = document.querySelector('.view-flyer-link');
+
+    if (flyerLink) {
+        flyerLink.addEventListener('click', (e) => {
+            // Detect Windows OS
+            const isWindows = /Windows/i.test(navigator.userAgent);
+
+            if (isWindows) {
+                // Prevent default download behavior on Windows
+                e.preventDefault();
+
+                // Open PDF in a new window with specific dimensions
+                // This forces the browser to display it rather than download it
+                const pdfUrl = flyerLink.getAttribute('href');
+                const width = Math.min(1200, window.screen.width * 0.9);
+                const height = Math.min(800, window.screen.height * 0.9);
+                const left = (window.screen.width - width) / 2;
+                const top = (window.screen.height - height) / 2;
+
+                window.open(
+                    pdfUrl,
+                    'FlyerViewer',
+                    `width=${width},height=${height},left=${left},top=${top},toolbar=yes,location=yes,menubar=yes,scrollbars=yes,resizable=yes`
+                );
+            }
+            // For non-Windows systems, let the default behavior work (opens in new tab)
+        });
+    }
 });
 
