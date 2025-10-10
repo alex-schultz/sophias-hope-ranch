@@ -145,7 +145,9 @@ const toggleBio = (img) => {
                     setTimeout(() => {
                         const boardBioDesktop = document.getElementById('board-bio-desktop');
                         if (boardBioDesktop) {
-                            const offset = -400;
+                            // Use a smaller offset for mobile devices and tablets
+                            const isMobileOrTablet = window.innerWidth <= 1024;
+                            const offset = isMobileOrTablet ? -120 : -200;
                             const y = boardBioDesktop.getBoundingClientRect().top + window.scrollY + offset;
                             window.scrollTo({ top: y, behavior: 'smooth' });
                         }
