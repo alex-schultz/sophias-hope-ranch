@@ -114,7 +114,7 @@ const toggleBio = (img) => {
     const card = img.closest('.board-card');
     card.classList.toggle('active');
     if (isMobile) {
-        // Mobile accordion style
+        // Mobile accordion style - expand bio within the card
         document.querySelectorAll('.board-card').forEach(c => {
             if (c !== card) {
                 c.classList.remove('open');
@@ -122,14 +122,26 @@ const toggleBio = (img) => {
             }
         });
         card.classList.toggle('open');
+
+        // Scroll to the clicked card to ensure it's visible
+        // Only scroll if we're opening (not closing)
+        if (card.classList.contains('open')) {
+            setTimeout(() => {
+                const headerHeight = 80; // Fixed header height
+                const offset = 20; // Additional spacing from top
+                const y = card.getBoundingClientRect().top + window.scrollY - headerHeight - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }, 100); // Small delay to allow accordion animation to start
+        }
     } else {
+        // Desktop: extract bio and show it in a shared container
         // Remove active toggle on other cards
         document.querySelectorAll('.board-card').forEach(c => {
             if (c !== card) {
                 c.classList.remove('active');
             }
         });
-        // Desktop: extract bio and show it in a shared container
+
         const bio = card.querySelector('.board-bio');
         const bioContainer = document.getElementById('board-bio-desktop');
         const isAlreadyOpen = bioContainer.innerHTML === bio.innerHTML && bioContainer.style.display === 'block';
@@ -140,19 +152,13 @@ const toggleBio = (img) => {
             } else {
                 bioContainer.innerHTML = bio.innerHTML;
                 bioContainer.style.display = 'block';
-                const boardBioDesktop = document.getElementById('board-bio-desktop');
-                if (boardBioDesktop) {
-                    setTimeout(() => {
-                        const boardBioDesktop = document.getElementById('board-bio-desktop');
-                        if (boardBioDesktop) {
-                            // Use a smaller offset for mobile devices and tablets
-                            const isMobileOrTablet = window.innerWidth <= 1024;
-                            const offset = isMobileOrTablet ? -120 : -200;
-                            const y = boardBioDesktop.getBoundingClientRect().top + window.scrollY + offset;
-                            window.scrollTo({ top: y, behavior: 'smooth' });
-                        }
-                    }, 0);
-                }
+
+                // Scroll to the desktop bio container
+                setTimeout(() => {
+                    const offset = -200; // Offset from top
+                    const y = bioContainer.getBoundingClientRect().top + window.scrollY + offset;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }, 100); // Small delay to allow content to render
             }
         }
     }
