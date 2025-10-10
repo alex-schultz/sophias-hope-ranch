@@ -19,9 +19,9 @@
       style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'sha256-GlxMfbDl73kN2FaXl+u9fQBtHyzLwC2evwinuyKmgXM=' 'sha256-lqaUTp4AFIo+P2WUs81N56QrKUfr0hkCPnj7cX5YE1I=';
       font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
       img-src 'self' data: https://i.ytimg.com;
-      connect-src 'self';
-      frame-src https://www.youtube.com https://www.youtube-nocookie.com;
-      object-src 'none';
+      connect-src 'self' https://venmo.com https://cash.app;
+      frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
+      object-src 'self';
       base-uri 'self';
       form-action 'self';
     ">
@@ -118,13 +118,13 @@
                 <li role="none"><a href="#programs" role="menuitem">Programs</a></li>
                 <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
                 <li role="none">
-                    <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+                    <a href="#donate"
                        class="btn btn-primary donate-mobile">
                         Donate
                     </a>
                 </li>
             </ul>
-            <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+            <a href="#donate"
                class="btn btn-primary donate-desktop"
                type="button">
                 Donate
@@ -150,8 +150,43 @@
             </p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary" aria-label="Get help today">Get Help Today</a>
-                <a href="#about" class="btn btn-secondary" aria-label="Learn more about Sophia's Hope Ranch">Learn
-                    More</a>
+                <a href="#about" class="btn btn-secondary" aria-label="Learn more about Sophia's Hope Ranch">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flyer Section -->
+    <section class="flyer-section" aria-labelledby="flyer-heading">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="flyer-heading" class="accent serif">Join Us at Our Fundraiser</h2>
+                <p class="section-subtitle">Download our informational flyer for more information.</p>
+            </div>
+
+            <div class="flyer-container">
+                <div class="flyer-preview">
+                    <iframe src="/assets/flyers/flyer.pdf#toolbar=0&navpanes=0&scrollbar=0"
+                            title="Sophia's Hope Ranch Informational Flyer"
+                            class="flyer-embed"
+                            loading="lazy"></iframe>
+                </div>
+                <div class="flyer-actions">
+                    <a href="/assets/flyers/flyer.pdf"
+                       class="btn btn-primary"
+                       download
+                       aria-label="Download flyer as PDF">
+                        <i class="fas fa-download" aria-hidden="true"></i> Download Flyer
+                    </a>
+                    <a href="/assets/flyers/flyer.pdf"
+                       class="btn btn-outline"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="View flyer in new tab">
+                        <i class="fas fa-external-link-alt" aria-hidden="true"></i> View Full Screen
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -436,7 +471,7 @@
                         We're preparing a powerful therapeutic experience through horse-assisted care.
                         Your support helps us bring this program to life.
                     </p>
-                    <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+                    <a href="#donate"
                        class="btn btn-primary"
                        type="button">
                         Support This Program
@@ -537,7 +572,7 @@
                         </ul>
 
                         <div class="help-launch">
-                            <a href="https://www.gofundme.com/f/donate-to-sophias-hope-ranch-a-sanctuary-for-families?attribution_id=sl:b7abd3b8-69fd-44a8-8910-bdb8f9b8d409&utm_campaign=donation_cta&utm_medium=button&utm_source=website"
+                            <a href="#donate"
                                class="btn btn-primary"
                                role="button"
                             >
@@ -671,6 +706,47 @@
 
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="donate-section" aria-labelledby="donate-heading">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="donate-heading" class="accent serif">Support Our Mission</h2>
+                <p class="section-subtitle">Your generous donations help us provide healing and hope to families in
+                    need. Choose your preferred payment method below.</p>
+            </div>
+
+            <div class="donate-grid">
+                <div class="donate-card">
+                    <div class="donate-icon">
+                        <i class="fab fa-cc-paypal" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent serif">Venmo</h3>
+                    <p>Send your donation securely through Venmo</p>
+                    <a href="#" class="btn btn-primary donate-btn" data-payment="venmo" aria-label="Donate via Venmo">
+                        Donate with Venmo
+                    </a>
+                </div>
+
+                <div class="donate-card">
+                    <div class="donate-icon">
+                        <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent serif">Cash App</h3>
+                    <p>Send your donation securely through Cash App</p>
+                    <a href="#" class="btn btn-primary donate-btn" data-payment="cashapp"
+                       aria-label="Donate via Cash App">
+                        Donate with Cash App
+                    </a>
+                </div>
+            </div>
+
+            <div class="donate-info">
+                <p><strong>Sophia's Hope Ranch</strong> is a 501(c)(3) nonprofit organization. Your donation may be
+                    tax-deductible.</p>
             </div>
         </div>
     </section>

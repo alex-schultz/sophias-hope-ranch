@@ -404,3 +404,43 @@ document.querySelectorAll('section[aria-labelledby]').forEach(section => {
     sectionObserver.observe(section);
 });
 
+// Donate button handler with mobile app detection
+document.addEventListener('DOMContentLoaded', () => {
+    const donateButtons = document.querySelectorAll('.donate-btn');
+
+    donateButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const paymentType = button.getAttribute('data-payment');
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            let url;
+
+            if (paymentType === 'venmo') {
+                if (isMobile) {
+                    // Try to open Venmo app first, fallback to web
+                    url = 'venmo://paycharge?txn=pay&recipients=sophiashoperanch';
+                    // Set a timeout to redirect to web version if app doesn't open
+                    const webUrl = 'https://www.venmo.com/u/sophiashoperanch';
+                    window.location.href = url;
+                    setTimeout(() => {
+                        window.location.href = webUrl;
+                    }, 1500);
+                    return;
+                } else {
+                    // Desktop: open Venmo web
+                    url = 'https://www.venmo.com/u/sophiashoperanch';
+                }
+            } else if (paymentType === 'cashapp') {
+                // Cash App URL works universally and opens app on mobile automatically
+                url = 'https://cash.app/$sophiashoperanch';
+            }
+
+            if (url) {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        });
+    });
+});
+
