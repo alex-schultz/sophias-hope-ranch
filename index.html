@@ -167,20 +167,19 @@
 
             <div class="flyer-container">
                 <div class="flyer-preview">
-                    <iframe src="/assets/flyers/flyer.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
-                            title="Sophia's Hope Ranch Informational Flyer"
+                    <object data="/assets/flyers/flyer.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                            type="application/pdf"
                             class="flyer-embed"
-                            loading="lazy"></iframe>
+                            title="Sophia's Hope Ranch Informational Flyer"
+                            aria-label="Sophia's Hope Ranch Informational Flyer">
+                        <iframe src="/assets/flyers/flyer.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                                title="Sophia's Hope Ranch Informational Flyer"
+                                class="flyer-embed"></iframe>
+                    </object>
                 </div>
                 <div class="flyer-actions">
-                    <a href="/assets/flyers/flyer.pdf"
-                       class="btn btn-primary"
-                       download
-                       aria-label="Download flyer as PDF">
-                        <i class="fas fa-download" aria-hidden="true"></i> Download Flyer
-                    </a>
                     <a href="/assets/flyers/flyer.pdf#view=Fit"
-                       class="btn btn-outline"
+                       class="btn btn-primary"
                        target="_blank"
                        rel="noopener noreferrer"
                        aria-label="View flyer in new tab">
