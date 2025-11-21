@@ -11,7 +11,7 @@ If you would like to improve this site, please open an issue.
 This site has been tested by the Google Chrome Lighthouse plugin regarding Performance, Accessibility, Best practices,
 and SEO.
 
-All future changes will be held to the same standards.
+All future changes will be held to at least these standards.
 
 ## Desktop
 
