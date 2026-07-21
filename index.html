@@ -19,11 +19,11 @@
       style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'sha256-GlxMfbDl73kN2FaXl+u9fQBtHyzLwC2evwinuyKmgXM=' 'sha256-lqaUTp4AFIo+P2WUs81N56QrKUfr0hkCPnj7cX5YE1I=';
       font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
       img-src 'self' data: https://i.ytimg.com;
-      connect-src 'self' https://venmo.com https://cash.app;
+      connect-src 'self' https://venmo.com https://cash.app https://api.web3forms.com https://assets.mailerlite.com;
       frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com;
       object-src 'self';
       base-uri 'self';
-      form-action 'self';
+      form-action 'self' https://api.web3forms.com;
     ">
 
     <!-- Schema -->
@@ -162,10 +162,10 @@
         <div class="container">
             <div class="section-header">
                 <h2 id="about-heading" class="accent serif">About Sophia's Hope Ranch</h2>
-                <p class="section-subtitle">Sophia’s Hope Ranch is a Christ-centered ministry dedicated to healing
-                    families impacted by attachment disruptions and trauma. We foster secure attachments through faith
-                    in Jesus, the ultimate Healer, and employ innovative, evidence-based practices to promote
-                    connection, health, and well-being.</p>
+                <p class="section-subtitle">Sophia’s Hope Ranch is a faith-centered nonprofit therapeutic ranch
+                    dedicated to restoring hope, healing, and emotional wellness for individuals and families impacted
+                    by trauma, mental health challenges, relational disruption, grief, and adverse life
+                    experiences.</p>
             </div>
 
             <!-- Introduction -->
@@ -183,9 +183,8 @@
                 <div class="about-text">
                     <h3>Our Mission</h3>
                     <p>
-                        At Sophia's Hope Ranch, we believe that healing happens when families are supported with
-                        compassionate, faith-centered care. Our mission is to provide comprehensive treatment for
-                        attachment disruption and trauma, helping families rebuild trust, connection, and hope.
+                        We help children, adults, and families heal from trauma. Through faith-centered counseling,
+                        time with horses, and a caring community, we walk with people from hurt to hope.
                     </p>
 
                     <p class="accent serif stats-label">In just the past 12 months...</p>
@@ -235,135 +234,6 @@
                          alt="Woman and her child walking in the grass with a sunset in the background"
                          draggable="false">
                 </div>
-            </div>
-
-            <!-- About Board -->
-            <div class="about-text">
-                <h3>Board of Directors</h3>
-                <div class="board-grid">
-                    <div class="board-card">
-                        <img src="/assets/images/theresa-schultz.webp"
-                             alt="Image of Theresa Schultz, founder of Sophia's Hope Ranch"
-                             loading="lazy"
-                             class="board-img loaded">
-                        <h4>Theresa Schultz</h4>
-                        <span class="accent serif">Founder</span>
-                        <div class="board-bio">
-                            <p>
-                                Theresa is a Christ-follower, mother, and clinical therapist. With five grown children
-                                (two adopted, three biological) and five amazing grandchildren, she has always been
-                                drawn to caring for children and families in need.
-                            </p>
-                            <p class="italic">
-                                "For over 30 years, I've served in many roles - foster mom, CASA volunteer, board
-                                member, and therapist, each one deepening my passion for helping children heal. As a
-                                trauma and attachment specialist, and as a mom to a daughter who experienced attachment
-                                disruption, I’ve witnessed the heartbreaking struggle to build safe, connected
-                                relationships. Sophia’s Hope Ranch was born from both the pain and the hope of that
-                                journey, a reflection of my lifelong calling to help families heal."
-                            </p>
-                        </div>
-                    </div>
-                    <div class="board-card">
-                        <img src="/assets/images/amber-griffin.webp"
-                             alt="Image of board member Amber Griffin-Colvin"
-                             loading="lazy"
-                             class="board-img loaded">
-                        <h4>Amber Griffin-Colvin</h4>
-                        <div class="board-bio">
-                            <p>
-                                Amber is a devoted wife, mother, and proud grandmother whose deep love for people shines
-                                through in everything she does. As a successful and hard-working realtor, she is known
-                                for serving her clients with integrity, compassion, and excellence. Beyond her
-                                professional life, Amber is a generous and active member of the community with a heart
-                                for philanthropy.
-                            </p>
-                            <p>
-                                Her passion for children and her faith in Jesus makes her a natural fit for the mission
-                                of Sophia’s Hope Ranch. Amber brings a spirit of encouragement, service, and wisdom to
-                                the board, helping to ensure the vision of creating a healing and hope-filled
-                                environment for families becomes a reality.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="board-card">
-                        <img src="/assets/images/janice-riley.webp"
-                             alt="Image of board member Janice Riley"
-                             loading="lazy"
-                             class="board-img loaded">
-                        <h4>Janice Riley</h4>
-                        <div class="board-bio">
-                            <p>
-                                Founder of Ekklesia Arising, Janice Riley brings a unique blend of experience in the
-                                tech startup world, finance industry, and the publishing world. She has been published
-                                in multiple collaborative projects as well as her own nonfiction book, Time to Rise and
-                                Shine: A Call for the Bride of Christ to Emerge. Having been in and around the
-                                publishing industry for more than twenty years, she has developed a different process
-                                and perspective on writing and publishing your book.
-                            </p>
-                            <p>
-                                Ordained with Joan Hunter Ministries in 2018, Janice has served on multiple mission
-                                trips, leading multiple teams to the Dominican Republic over the years and has also been
-                                to India, Honduras, and more.
-                            </p>
-                            <p>
-                                Author, speaker and strategic catalyst are only a few ways one could describe Janice.
-                                She is also a dear friend to many and an open ear to those needing help and spiritual
-                                guidance.
-                            </p>
-                            <p>
-                                In her book, Time to Rise and Shine, Janice discusses what it’s like to become a true
-                                follower of Jesus Christ and executable tactics on how to do so. The book is a heart’s
-                                cry to come and be transformed into the likeness of Christ, calling the Bride of Christ
-                                into her destiny, her identity.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="board-card">
-                        <img src="/assets/images/chet-marko.webp"
-                             alt="Image of board member Chet Marko"
-                             loading="lazy"
-                             class="board-img loaded">
-                        <h4>Chet Marko</h4>
-                        <div class="board-bio">
-                            <p>
-                                Chet is a 35-year resident of Boerne, husband to an awesome wife named Paige, father to
-                                seven kids, and grandfather to 17 grandkids. Found the Lord at Texas Tech through
-                                College Young life and served in leadership with College Young life. After graduating
-                                college, he served as a youth director and later committed several years to Missions in
-                                Japan and Mexico. After returning, he settled into Health Insurance and soon launched
-                                his own Health Insurance Brokerage called Smart Choice Benefits. He and Paige have had
-                                an interesting path as lay ministers. We have worked with youth ministry, singles
-                                ministry, divorce ministry, sexual abuse recovery, and helping those who struggle with
-                                mental health. We believe God loves us where we are and has a beautiful plan to lead us
-                                to understand the power of his love, and healing.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="board-card">
-                        <img src="/assets/images/diana-harris.webp"
-                             alt="Image of board member Diana Harris"
-                             loading="lazy"
-                             class="board-img loaded">
-                        <h4>Diana Harris</h4>
-                        <div class="board-bio">
-                            <p>
-                                Diana holds an MBA in Healthcare management and a BS in Healthcare Administration. She
-                                currently oversees administration for Kresta Roofing, Kresta Investment properties, and
-                                Kresta Investments, and has consulted in healthcare using Baldrige principles.
-                                With over 20 years of equine experience in training, barrel racing, team roping, and
-                                horse care, Diana previously owned and managed a horse export facility, coordinating
-                                international sales to Europe, Qaisar, Dubai, and Kuwait. She brings a rare combination
-                                of business leadership, healthcare expertise, and hands-on equine knowledge to the
-                                Board, advancing the organization's mission of healing and growth through
-                                equine-assisted services.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- Shared bio container -->
-                <div class="board-bio-desktop" id="board-bio-desktop"></div>
             </div>
         </div>
     </section>
@@ -432,23 +302,14 @@
                         communication and recognizing and understanding each other's perspective.</p>
                 </div>
 
-                <div class="service-card coming-soon">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-horse" aria-hidden="true"></i>
                     </div>
-                    <h3 class="accent serif">Equine Therapy <span class="badge no-serif">Coming Soon</span></h3>
-                    <p class="mb">
-                        We're preparing a powerful therapeutic experience through horse-assisted care.
-                        Your support helps us bring this program to life.
-                    </p>
-                    <a href="#donate"
-                       class="btn btn-primary"
-                       type="button">
-                        Support This Program
-                    </a>
-                    <!--                    <p>Leverage unique sensitivity of horses to facilitate emotional, mental, and physical-->
-                    <!--                        well-being. Strengthens trust and emotional resilience via human-horse-->
-                    <!--                        interactions.</p>-->
+                    <h3 class="accent serif">Equine Therapy</h3>
+                    <p>Leverage unique sensitivity of horses to facilitate emotional, mental, and physical
+                        well-being. Strengthens trust and emotional resilience via human-horse
+                        interactions.</p>
                 </div>
 
                 <div class="service-card">
@@ -523,7 +384,7 @@
                     </div>
                 </div>
 
-                <div class="program-card coming-soon">
+                <div class="program-card">
                     <img src="/assets/images/boy-hugging-horse.webp"
                          alt="Boy hugging a horse"
                          class="loaded"
@@ -531,7 +392,7 @@
                          draggable="false">
                     <div class="program-content">
                         <h3 class="accent serif">
-                            Extended Stay Program <span class="badge badge-locked no-serif">Coming Soon</span>
+                            Extended Stay Program
                         </h3>
                         <p>
                             For individuals (ages 5+) or families. Providing immersive, 24/7 care in a supportive,
@@ -545,14 +406,6 @@
                             <li>Equine Therapy</li>
                         </ul>
 
-                        <div class="help-launch">
-                            <a href="#donate"
-                               class="btn btn-primary"
-                               role="button"
-                            >
-                                Help Launch This Program
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -595,7 +448,207 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p class="italic">I have been able to process a lot of my childhood trauma and gained so much
+                            self-awareness through our sessions together, and I want to thank you so much for
+                            that.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div>
+                            <p>Anonymous</p>
+                            <span>Therapy client</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Board Section -->
+    <section id="board" class="board" aria-labelledby="board-heading">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="board-heading" class="accent serif">Board of Directors</h2>
+                <p class="section-subtitle">Meet the people guiding our mission of healing and hope.</p>
+            </div>
+            <div class="board-grid">
+                <div class="board-card">
+                    <img src="/assets/images/theresa-schultz.webp"
+                         alt="Image of Theresa Schultz, founder of Sophia's Hope Ranch"
+                         loading="lazy"
+                         class="board-img loaded">
+                    <h4>Theresa Schultz, LCSW</h4>
+                    <span class="accent serif">President and Founder</span>
+                    <div class="board-bio">
+                        <p>
+                            Theresa is a Christ-follower, mother, and clinical therapist. With five grown children
+                            (two adopted, three biological) and five amazing grandchildren, she has always been
+                            drawn to caring for children and families in need.
+                        </p>
+                        <p class="italic">
+                            "For over 30 years, I've served in many roles - foster mom, CASA volunteer, board
+                            member, and therapist, each one deepening my passion for helping children heal. As a
+                            trauma and attachment specialist, and as a mom to a daughter who experienced attachment
+                            disruption, I’ve witnessed the heartbreaking struggle to build safe, connected
+                            relationships. Sophia’s Hope Ranch was born from both the pain and the hope of that
+                            journey, a reflection of my lifelong calling to help families heal."
+                        </p>
+                    </div>
+                </div>
+                <div class="board-card">
+                    <img src="/assets/images/janice-riley.webp"
+                         alt="Image of board member Janice Riley"
+                         loading="lazy"
+                         class="board-img loaded">
+                    <h4>Janice Riley</h4>
+                    <span class="accent serif">Vice President</span>
+                    <div class="board-bio">
+                        <p>
+                            Founder of Ekklesia Arising, Janice Riley brings a unique blend of experience in the
+                            tech startup world, finance industry, and the publishing world. She has been published
+                            in multiple collaborative projects as well as her own nonfiction book, Time to Rise and
+                            Shine: A Call for the Bride of Christ to Emerge. Having been in and around the
+                            publishing industry for more than twenty years, she has developed a different process
+                            and perspective on writing and publishing your book.
+                        </p>
+                        <p>
+                            Ordained with Joan Hunter Ministries in 2018, Janice has served on multiple mission
+                            trips, leading multiple teams to the Dominican Republic over the years and has also been
+                            to India, Honduras, and more.
+                        </p>
+                        <p>
+                            Author, speaker and strategic catalyst are only a few ways one could describe Janice.
+                            She is also a dear friend to many and an open ear to those needing help and spiritual
+                            guidance.
+                        </p>
+                        <p>
+                            In her book, Time to Rise and Shine, Janice discusses what it’s like to become a true
+                            follower of Jesus Christ and executable tactics on how to do so. The book is a heart’s
+                            cry to come and be transformed into the likeness of Christ, calling the Bride of Christ
+                            into her destiny, her identity.
+                        </p>
+                    </div>
+                </div>
+                <div class="board-card">
+                    <img src="/assets/images/alex-schultz.webp"
+                         alt="Image of board member Alex Schultz"
+                         loading="lazy"
+                         class="board-img loaded">
+                    <h4>Alex Schultz</h4>
+                    <span class="accent serif">Secretary</span>
+                    <div class="board-bio">
+                        <p>
+                            Alex is a software engineer and real estate investor who serves as Secretary of the
+                            board. As the ranch's technology lead, Alex built and maintains the very website you're
+                            reading now, working behind the scenes to make sure the ranch's story of healing and
+                            hope reaches the families who need it most.
+                        </p>
+                    </div>
+                </div>
+                <div class="board-card">
+                    <img src="/assets/images/chet-marko.webp"
+                         alt="Image of board member Chet Marko"
+                         loading="lazy"
+                         class="board-img loaded">
+                    <h4>Chet Marko</h4>
+                    <span class="accent serif">Treasurer</span>
+                    <div class="board-bio">
+                        <p>
+                            Chet is a 35-year resident of Boerne, husband to an awesome wife named Paige, father to
+                            seven kids, and grandfather to 17 grandkids. Found the Lord at Texas Tech through
+                            College Young life and served in leadership with College Young life. After graduating
+                            college, he served as a youth director and later committed several years to Missions in
+                            Japan and Mexico. After returning, he settled into Health Insurance and soon launched
+                            his own Health Insurance Brokerage called Smart Choice Benefits. He and Paige have had
+                            an interesting path as lay ministers. We have worked with youth ministry, singles
+                            ministry, divorce ministry, sexual abuse recovery, and helping those who struggle with
+                            mental health. We believe God loves us where we are and has a beautiful plan to lead us
+                            to understand the power of his love, and healing.
+                        </p>
+                    </div>
+                </div>
+                <div class="board-card">
+                    <img src="/assets/images/diana-harris.webp"
+                         alt="Image of board member Diana Harris"
+                         loading="lazy"
+                         class="board-img loaded">
+                    <h4>Diana Harris</h4>
+                    <span class="accent serif">Director, Equine Programs</span>
+                    <div class="board-bio">
+                        <p>
+                            Diana holds an MBA in Healthcare management and a BS in Healthcare Administration. She
+                            currently oversees administration for Kresta Roofing, Kresta Investment properties, and
+                            Kresta Investments, and has consulted in healthcare using Baldrige principles.
+                            With over 20 years of equine experience in training, barrel racing, team roping, and
+                            horse care, Diana previously owned and managed a horse export facility, coordinating
+                            international sales to Europe, Qaisar, Dubai, and Kuwait. She brings a rare combination
+                            of business leadership, healthcare expertise, and hands-on equine knowledge to the
+                            Board, advancing the organization's mission of healing and growth through
+                            equine-assisted services.
+                        </p>
+                    </div>
+                </div>
+                <div class="board-card">
+                    <img src="/assets/images/amber-griffin.webp"
+                         alt="Image of board member Amber Griffin-Colvin"
+                         loading="lazy"
+                         class="board-img loaded">
+                    <h4>Amber Griffin-Colvin</h4>
+                    <span class="accent serif">Director</span>
+                    <div class="board-bio">
+                        <p>
+                            Amber is a devoted wife, mother, and proud grandmother whose deep love for people shines
+                            through in everything she does. As a successful and hard-working realtor, she is known
+                            for serving her clients with integrity, compassion, and excellence. Beyond her
+                            professional life, Amber is a generous and active member of the community with a heart
+                            for philanthropy.
+                        </p>
+                        <p>
+                            Her passion for children and her faith in Jesus makes her a natural fit for the mission
+                            of Sophia’s Hope Ranch. Amber brings a spirit of encouragement, service, and wisdom to
+                            the board, helping to ensure the vision of creating a healing and hope-filled
+                            environment for families becomes a reality.
+                        </p>
+                    </div>
+                </div>
+<!--                <div class="board-card">-->
+<!--                    &lt;!&ndash; TODO: replace placeholder with /assets/images/wendy-gobernatz.webp and add a real bio &ndash;&gt;-->
+<!--                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'%3E%3Crect width='200' height='240' rx='15' fill='%23e8eef0'/%3E%3Ccircle cx='100' cy='92' r='38' fill='%23b9c8cd'/%3E%3Cpath d='M100 142c38 0 62 26 62 62v36H38v-36c0-36 24-62 62-62z' fill='%23b9c8cd'/%3E%3C/svg%3E"-->
+<!--                         alt="Placeholder image of board member Wendy Gobernatz"-->
+<!--                         loading="lazy"-->
+<!--                         class="board-img loaded">-->
+<!--                    <h4>Wendy Gobernatz</h4>-->
+<!--                    <span class="accent serif">Director</span>-->
+<!--                    <div class="board-bio">-->
+<!--                        <p>Bio coming soon.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+            </div>
+            <!-- Shared bio container -->
+            <div class="board-bio-desktop" id="board-bio-desktop"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="newsletter" aria-labelledby="newsletter-heading">
+        <div class="container">
+            <div class="section-header">
+                <h2 id="newsletter-heading" class="accent serif">Join Our Mailing List</h2>
+                <p class="section-subtitle">Get updates on new programs, upcoming events, and stories of hope
+                    delivered to your inbox.</p>
+            </div>
+            <form class="newsletter-form" aria-labelledby="newsletter-heading">
+                <div class="form-group">
+                    <label for="newsletter-email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="newsletter-email" name="email" required aria-required="true"
+                           placeholder="janedoe@example.com" autocomplete="email">
+                </div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+                <p class="form-status" role="status" aria-live="polite"></p>
+            </form>
         </div>
     </section>
 
@@ -622,8 +675,8 @@
                         <i class="fas fa-envelope" aria-hidden="true"></i>
                         <div>
                             <h4>Email</h4>
-                            <a href="mailto:sophiashoperanch@proton.me"
-                               aria-label="Email us at sophiashoperanch@proton.me">sophiashoperanch@proton.me</a>
+                            <a href="mailto:theresa@sophiashoperanch.org"
+                               aria-label="Email us at theresa@sophiashoperanch.org">theresa@sophiashoperanch.org</a>
                         </div>
                     </div>
 
@@ -636,8 +689,16 @@
                     </div>
                 </div>
 
-                <form class="contact-form" aria-labelledby="contact-form-heading">
+                <form class="contact-form" id="contact-form"
+                      action="https://api.web3forms.com/submit" method="POST"
+                      aria-labelledby="contact-form-heading">
                     <h3 id="contact-form-heading" class="accent serif">Send Us a Message</h3>
+
+                    <input type="hidden" name="access_key" value="b0aad343-a6e4-4dbb-ab08-cd2f04f58aaa">
+                    <input type="hidden" name="from_name" value="Sophia's Hope Ranch Website">
+                    <input type="hidden" name="redirect" value="https://sophiashoperanch.org/#contact">
+                    <!-- Honeypot: real users never see or check this -->
+                    <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" hidden>
 
                     <div class="form-group">
                         <label for="name">Full Name <span class="required">*</span></label>
@@ -679,6 +740,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
                 </form>
             </div>
         </div>

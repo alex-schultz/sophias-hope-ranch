@@ -178,7 +178,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
 });
 
 // Apply fade animation to cards and sections
-const fadeElements = document.querySelectorAll('.service-card, .program-card, .testimonial-card, .about-text, .about-image');
+const fadeElements = document.querySelectorAll('.service-card, .program-card, .testimonial-card, .about-text, .about-image, .board-card');
 fadeElements.forEach(element => {
     element.style.opacity = '0';
     element.style.transform = 'translateY(30px)';
@@ -206,10 +206,10 @@ document.getElementById("phone").addEventListener("input", function (e) {
     input.value = formatted;
 });
 
-// Form submission handling
-const contactForm = document.querySelector('.contact-form');
+// Form submission handling (Web3Forms)
+const contactForm = document.getElementById('contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function (e) {
+    contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         // Get form data
@@ -249,34 +249,67 @@ if (contactForm) {
         }
 
         if (isValid) {
-            // Construct email
-            const name = document.getElementById("name").value.trim();
-            const email = document.getElementById("email").value.trim();
-            const phone = document.getElementById("phone").value.trim();
-            let subject = document.getElementById("subject").value.trim();
-            subject = `Sophia's Hope Form - ${subject}`
-            const message = document.getElementById("message").value.trim();
+            const name = formObject.name.trim();
+            const email = formObject.email.trim();
+            const phone = formObject.phone.trim();
+            const subject = `Sophia's Hope Form - ${formObject.subject.trim()}`;
+            const message = formObject.message.trim();
 
+            // Mailto fallback in case the submission service is unreachable
             const body = encodeURIComponent(`Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`);
+            const mailtoLink = `mailto:theresa@sophiashoperanch.org?subject=${encodeURIComponent(subject)}&body=${body}`;
 
-            const mailtoLink = `mailto:sophiashoperanch@proton.me?subject=${encodeURIComponent(subject)}&body=${body}`;
-
-            window.location.href = mailtoLink;
-
-            // Show success message
             const submitBtn = this.querySelector('button[type="submit"]');
+            const statusEl = this.querySelector('.form-status');
             const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Message Sent!';
-            submitBtn.style.background = '#27ae60';
             submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
+            statusEl.textContent = '';
 
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
+            try {
+                const res = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: this.access_key.value,
+                        from_name: this.from_name.value,
+                        subject: subject,
+                        name: name,
+                        email: email, // Web3Forms sets the Reply-To from this
+                        phone: phone,
+                        message: message,
+                        botcheck: this.botcheck.checked
+                    })
+                });
+                const data = await res.json();
+                if (!res.ok || !data.success) {
+                    throw new Error(data.message || 'Submission failed');
+                }
+
+                // Show success message
+                submitBtn.textContent = 'Message Sent!';
+                submitBtn.style.background = '#27ae60';
+                statusEl.textContent = "Thank you! Your message has been sent. We'll be in touch soon.";
+
+                // Reset form after 4 seconds
+                setTimeout(() => {
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 4000);
+            } catch (err) {
                 submitBtn.disabled = false;
-            }, 3000);
+                submitBtn.textContent = originalText;
+                statusEl.textContent = 'Sorry, something went wrong sending your message. ';
+                const fallback = document.createElement('a');
+                fallback.href = mailtoLink;
+                fallback.textContent = 'Click here to email us directly instead.';
+                statusEl.appendChild(fallback);
+            }
         } else {
             // Show error message
             const submitBtn = this.querySelector('button[type="submit"]');
@@ -288,6 +321,68 @@ if (contactForm) {
                 submitBtn.textContent = originalText;
                 submitBtn.style.background = '';
             }, 1000);
+        }
+    });
+}
+
+// Mailing list signup (MailerLite embedded-form endpoint)
+// IDs come from the form's embed snippet action URL:
+//   https://assets.mailerlite.com/jsonp/ACCOUNT_ID/forms/FORM_ID/subscribe
+// The snippet's email field must stay named "fields[email]". If CORS ever blocks reading
+// the response, switch the fetch to { mode: 'no-cors' } and treat submission as success.
+const ML_ACCOUNT_ID = '2524205';
+const ML_FORM_ID = '193638968839898489';
+const newsletterForm = document.querySelector('.newsletter-form');
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        const emailInput = this.querySelector('input[name="email"]');
+        const statusEl = this.querySelector('.form-status');
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(emailInput.value.trim())) {
+            emailInput.style.borderColor = '#e74c3c';
+            statusEl.textContent = 'Please enter a valid email address.';
+            return;
+        }
+        emailInput.style.borderColor = '#e0e0e0';
+
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Subscribing…';
+        statusEl.textContent = '';
+
+        const body = new URLSearchParams();
+        body.set('fields[email]', emailInput.value.trim());
+        body.set('ml-submit', '1');
+        body.set('anticsrf', 'true');
+
+        try {
+            const res = await fetch(`https://assets.mailerlite.com/jsonp/${ML_ACCOUNT_ID}/forms/${ML_FORM_ID}/subscribe`, {
+                method: 'POST',
+                body: body
+            });
+            const data = await res.json();
+            if (!data.success) {
+                throw new Error('Subscribe failed');
+            }
+
+            submitBtn.textContent = 'Subscribed!';
+            submitBtn.style.background = '#27ae60';
+            statusEl.textContent = 'Thanks for subscribing! Please check your inbox to confirm.';
+            this.reset();
+
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 4000);
+        } catch (err) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            statusEl.textContent = 'Sorry, something went wrong. Please try again later.';
         }
     });
 }
