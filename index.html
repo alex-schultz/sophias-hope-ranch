@@ -7,7 +7,7 @@
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma. Individual and family therapy is available for all.">
+          content="Sophia's Hope Ranch is a faith-centered therapeutic ranch helping families affected by attachment disruption and trauma. Individual and family therapy is available for all.">
     <meta name="keywords"
           content="Sophias, hope, ranch, sophia, sofia, therapy, counsel, counseling, residential care, equine therapy, trauma treatment, crisis intervention, attachment therapy, healing, family counseling, ranch, recovery, therapy, Christian counseling, couples">
     <meta name="author" content="Sophia's Hope Ranch">
@@ -15,7 +15,7 @@
     <!-- Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' https://cdnjs.cloudflare.com https://www.youtube.com;
+      script-src 'self' https://cdnjs.cloudflare.com https://www.youtube.com 'sha256-qXGvj/7ZRFMipjrYS6egadN7kOqeqCwWP8giBm9clUM=';
       style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com 'sha256-GlxMfbDl73kN2FaXl+u9fQBtHyzLwC2evwinuyKmgXM=' 'sha256-lqaUTp4AFIo+P2WUs81N56QrKUfr0hkCPnj7cX5YE1I=';
       font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
       img-src 'self' data: https://i.ytimg.com;
@@ -35,7 +35,7 @@
             "name": "Sophia's Hope Ranch",
             "url": "https://sophiashoperanch.org",
             "logo": "https://sophiashoperanch.org/assets/horse.webp",
-            "description": "Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma. Services include Trust Based Relational Intervention, individual therapy, family therapy, couples therapy, play therapy, expressive arts therapy, and a multitude of personalized workshops designed for lasting transformation.",
+            "description": "Sophia's Hope Ranch is a faith-centered therapeutic ranch helping families affected by attachment disruption and trauma. Services include Trust Based Relational Intervention, individual therapy, family therapy, couples therapy, play therapy, expressive arts therapy, and a multitude of personalized workshops designed for lasting transformation.",
             "founder": "Theresa Schultz",
             "areaServed": {
                 "@type": "AdministrativeArea",
@@ -56,16 +56,16 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Sophia's Hope Ranch - Faith-Centered Therapy for Families">
     <meta property="og:description"
-          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma.  Individual and family therapy is available for all.">
+          content="Sophia's Hope Ranch is a faith-centered therapeutic ranch helping families affected by attachment disruption and trauma.  Individual and family therapy is available for all.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sophiashoperanch.org">
     <meta property="og:image" content="/assets/og-image.webp">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sophia's Hope Ranch - Faith-Centered Treatment for Families">
+    <meta name="twitter:title" content="Sophia's Hope Ranch - Faith-Centered Therapy for Families">
     <meta name="twitter:description"
-          content="Sophia's Hope Ranch is a faith-centered treatment center helping families affected by attachment disruption and trauma. Individual and family therapy is available for all.">
+          content="Sophia's Hope Ranch is a faith-centered therapeutic ranch helping families affected by attachment disruption and trauma. Individual and family therapy is available for all.">
     <meta name="twitter:image" content="/assets/og-image.webp">
 
     <!-- Canonical -->
@@ -84,7 +84,8 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- Bump ?v= on styles.css/script.js whenever they change, so cached copies can't pair stale assets with new HTML -->
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
 <!-- Skip to main content for accessibility -->
@@ -139,14 +140,11 @@
     <section id="home" class="hero" aria-labelledby="hero-heading">
         <div class="hero-content">
             <h1 id="hero-heading" class="hero-title">
-                Sophia's Hope Ranch
-            </h1>
-            <p class="hero-subtitle">
                 Healing Hearts, <span class="highlight">Restoring Hope</span>
-            </p>
+            </h1>
             <p class="hero-subtitle hero-subtitle-2">
-                A faith-centered treatment center helping families affected by attachment disruption and trauma find
-                healing and hope.
+                A faith-centered therapeutic ranch helping families affected by attachment disruption and trauma
+                find healing and hope.
             </p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary" aria-label="Get help today">Get Help Today</a>
@@ -171,27 +169,28 @@
             <!-- Introduction -->
             <div class="section-header">
                 <div class="container embedded-video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vbiPtlPfs3Y?si=pB76nPWfDRhs9uj3"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <button type="button" class="video-facade" data-video-id="vbiPtlPfs3Y"
+                            aria-label="Play video: Sophia's Hope Ranch introduction">
+                        <img src="https://i.ytimg.com/vi/vbiPtlPfs3Y/hqdefault.jpg" alt="" loading="lazy"
+                             class="no-border">
+                        <span class="play-badge"><i class="fas fa-play" aria-hidden="true"></i></span>
+                    </button>
                 </div>
             </div>
 
             <!-- About Sophia's Hope Ranch -->
+            <h3 class="accent serif mission-heading">Our Mission</h3>
+            <p class="mission-statement">
+                We help children, adults, and families heal from trauma. Through faith-centered counseling,
+                time with horses, and a caring community, we walk with people from hurt to hope.
+            </p>
             <div class="about-grid">
                 <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>
-                        We help children, adults, and families heal from trauma. Through faith-centered counseling,
-                        time with horses, and a caring community, we walk with people from hurt to hope.
-                    </p>
-
                     <p class="accent serif stats-label">In just the past 12 months...</p>
                     <div class="stats">
                         <div class="stat-item">
                             <span class="stat-number" data-target="10">0</span>
-                            <span class="stat-label">Children served</span>
+                            <span class="stat-label">Children Served</span>
                         </div>
                         <div class="stat-item">
                             <span class="stat-number" data-target="56">0</span>
@@ -211,7 +210,7 @@
                             <div class="stat-percentage">
                                 <span class="stat-number" data-target="100">0</span><span>%</span>
                             </div>
-                            <span class="stat-label">improvement on suicidal thoughts <sup>2</sup></span>
+                            <span class="stat-label">Improvement on Suicidal Thoughts <sup>2</sup></span>
                         </div>
                         <div class="stat-item">
                             <div class="stat-percentage">
@@ -238,17 +237,19 @@
         </div>
     </section>
 
-    <section>
+    <section id="adoption-story" aria-labelledby="adoption-heading">
         <div class="container">
             <div class="section-header">
-                <h2 class="accent serif">Adoption Story</h2>
+                <h2 id="adoption-heading" class="accent serif">Adoption Story</h2>
                 <p class="section-subtitle">Learn about a local family's adoption story.</p>
             </div>
             <div class="container embedded-video">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/cyucGXUa17Q?si=o_tL-ndCvWqg5Ck1"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <button type="button" class="video-facade" data-video-id="cyucGXUa17Q"
+                        aria-label="Play video: A local family's adoption story">
+                    <img src="https://i.ytimg.com/vi/cyucGXUa17Q/hqdefault.jpg" alt="" loading="lazy"
+                         class="no-border">
+                    <span class="play-badge"><i class="fas fa-play" aria-hidden="true"></i></span>
+                </button>
             </div>
         </div>
     </section>
@@ -257,7 +258,7 @@
     <section id="services" class="services" aria-labelledby="services-heading">
         <div class="container">
             <div class="section-header">
-                <h2 id="services-heading accent serif">Our Services</h2>
+                <h2 id="services-heading" class="accent serif">Our Services</h2>
                 <p class="section-subtitle">
                     We are honored to serve veterans, first responders, adoptive and foster families, and others who are
                     seeking healing from trauma and attachment-related challenges.
@@ -474,13 +475,14 @@
                 <p class="section-subtitle">Meet the people guiding our mission of healing and hope.</p>
             </div>
             <div class="board-grid">
-                <div class="board-card">
+                <div class="board-card" role="button" tabindex="0" aria-haspopup="dialog">
                     <img src="/assets/images/theresa-schultz.webp"
                          alt="Image of Theresa Schultz, founder of Sophia's Hope Ranch"
                          loading="lazy"
                          class="board-img loaded">
                     <h4>Theresa Schultz, LCSW</h4>
                     <span class="accent serif">President and Founder</span>
+                    <span class="bio-hint">Read Bio</span>
                     <div class="board-bio">
                         <p>
                             Theresa is a Christ-follower, mother, and clinical therapist. With five grown children
@@ -497,13 +499,14 @@
                         </p>
                     </div>
                 </div>
-                <div class="board-card">
+                <div class="board-card" role="button" tabindex="0" aria-haspopup="dialog">
                     <img src="/assets/images/janice-riley.webp"
                          alt="Image of board member Janice Riley"
                          loading="lazy"
                          class="board-img loaded">
                     <h4>Janice Riley</h4>
                     <span class="accent serif">Vice President</span>
+                    <span class="bio-hint">Read Bio</span>
                     <div class="board-bio">
                         <p>
                             Founder of Ekklesia Arising, Janice Riley brings a unique blend of experience in the
@@ -531,13 +534,14 @@
                         </p>
                     </div>
                 </div>
-                <div class="board-card">
+                <div class="board-card" role="button" tabindex="0" aria-haspopup="dialog">
                     <img src="/assets/images/alex-schultz.webp"
                          alt="Image of board member Alex Schultz"
                          loading="lazy"
                          class="board-img loaded">
                     <h4>Alex Schultz</h4>
                     <span class="accent serif">Secretary</span>
+                    <span class="bio-hint">Read Bio</span>
                     <div class="board-bio">
                         <p>
                             Alex is a software engineer and real estate investor who serves as Secretary of the
@@ -547,13 +551,14 @@
                         </p>
                     </div>
                 </div>
-                <div class="board-card">
+                <div class="board-card" role="button" tabindex="0" aria-haspopup="dialog">
                     <img src="/assets/images/chet-marko.webp"
                          alt="Image of board member Chet Marko"
                          loading="lazy"
                          class="board-img loaded">
                     <h4>Chet Marko</h4>
                     <span class="accent serif">Treasurer</span>
+                    <span class="bio-hint">Read Bio</span>
                     <div class="board-bio">
                         <p>
                             Chet is a 35-year resident of Boerne, husband to an awesome wife named Paige, father to
@@ -569,13 +574,14 @@
                         </p>
                     </div>
                 </div>
-                <div class="board-card">
+                <div class="board-card" role="button" tabindex="0" aria-haspopup="dialog">
                     <img src="/assets/images/diana-harris.webp"
                          alt="Image of board member Diana Harris"
                          loading="lazy"
                          class="board-img loaded">
                     <h4>Diana Harris</h4>
                     <span class="accent serif">Director, Equine Programs</span>
+                    <span class="bio-hint">Read Bio</span>
                     <div class="board-bio">
                         <p>
                             Diana holds an MBA in Healthcare management and a BS in Healthcare Administration. She
@@ -590,13 +596,14 @@
                         </p>
                     </div>
                 </div>
-                <div class="board-card">
+                <div class="board-card" role="button" tabindex="0" aria-haspopup="dialog">
                     <img src="/assets/images/amber-griffin.webp"
                          alt="Image of board member Amber Griffin-Colvin"
                          loading="lazy"
                          class="board-img loaded">
                     <h4>Amber Griffin-Colvin</h4>
                     <span class="accent serif">Director</span>
+                    <span class="bio-hint">Read Bio</span>
                     <div class="board-bio">
                         <p>
                             Amber is a devoted wife, mother, and proud grandmother whose deep love for people shines
@@ -613,22 +620,38 @@
                         </p>
                     </div>
                 </div>
-<!--                <div class="board-card">-->
-<!--                    &lt;!&ndash; TODO: replace placeholder with /assets/images/wendy-gobernatz.webp and add a real bio &ndash;&gt;-->
-<!--                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240'%3E%3Crect width='200' height='240' rx='15' fill='%23e8eef0'/%3E%3Ccircle cx='100' cy='92' r='38' fill='%23b9c8cd'/%3E%3Cpath d='M100 142c38 0 62 26 62 62v36H38v-36c0-36 24-62 62-62z' fill='%23b9c8cd'/%3E%3C/svg%3E"-->
-<!--                         alt="Placeholder image of board member Wendy Gobernatz"-->
-<!--                         loading="lazy"-->
-<!--                         class="board-img loaded">-->
-<!--                    <h4>Wendy Gobernatz</h4>-->
-<!--                    <span class="accent serif">Director</span>-->
-<!--                    <div class="board-bio">-->
-<!--                        <p>Bio coming soon.</p>-->
-<!--                    </div>-->
-<!--                </div>-->
+<!-- TODO Wendy Gobernatz: restore this card once her photo and bio are ready
+                <div class="board-card" role="button" tabindex="0" aria-haspopup="dialog">
+                    <img src="/assets/images/wendy-gobernatz.webp"
+                         alt="Image of board member Wendy Gobernatz"
+                         loading="lazy"
+                         class="board-img loaded">
+                    <h4>Wendy Gobernatz</h4>
+                    <span class="accent serif">Director</span>
+                    <span class="bio-hint">Read Bio</span>
+                    <div class="board-bio">
+                        <p>Wendy's bio goes here.</p>
+                    </div>
+                </div>
+                -->
 
             </div>
-            <!-- Shared bio container -->
-            <div class="board-bio-desktop" id="board-bio-desktop"></div>
+            <!-- Bio modal: populated from the clicked card by script.js -->
+            <dialog class="board-dialog" id="board-dialog" aria-labelledby="board-dialog-name">
+                <div class="dialog-content">
+                    <button type="button" class="dialog-close" aria-label="Close bio">
+                        <i class="fas fa-xmark" aria-hidden="true"></i>
+                    </button>
+                    <div class="dialog-header">
+                        <img class="dialog-img no-border loaded" src="" alt="">
+                        <div>
+                            <h4 id="board-dialog-name"></h4>
+                            <span class="accent serif dialog-role"></span>
+                        </div>
+                    </div>
+                    <div class="dialog-bio"></div>
+                </div>
+            </dialog>
         </div>
     </section>
 
@@ -640,7 +663,8 @@
                 <p class="section-subtitle">Get updates on new programs, upcoming events, and stories of hope
                     delivered to your inbox.</p>
             </div>
-            <form class="newsletter-form" aria-labelledby="newsletter-heading">
+            <!-- method="post" so a native (no-JS) submit never puts the email in the URL -->
+            <form class="newsletter-form" method="post" aria-labelledby="newsletter-heading">
                 <div class="form-group">
                     <label for="newsletter-email">Email Address <span class="required">*</span></label>
                     <input type="email" id="newsletter-email" name="email" required aria-required="true"
@@ -858,11 +882,11 @@
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Sophia's Hope Ranch. All rights reserved.</p>
+            <p>&copy; <span id="copyright-year">2026</span> Sophia's Hope Ranch. All rights reserved.</p>
         </div>
     </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

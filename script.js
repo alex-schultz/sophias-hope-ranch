@@ -95,95 +95,90 @@ document.querySelectorAll('.stat-number').forEach(counter => {
     counterObserver.observe(counter);
 });
 
-// Board Bios
+// Footer copyright year, kept current automatically
+const copyrightYearEl = document.getElementById('copyright-year');
+if (copyrightYearEl) copyrightYearEl.textContent = new Date().getFullYear();
+
+// Board Bios: clicking a card opens the member's photo, name, role, and bio
+// in a native <dialog>. The .board-bio markup inside each card is the data
+// source and is never displayed directly.
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".board-card").forEach(img => {
-        img.addEventListener("click", () => {
-            toggleBio(img);
-        });
-        img.addEventListener("keydown", e => {
-            if (e.key === "Enter" || e.key === " ") {
-                toggleBio(img);
+    const dialog = document.getElementById('board-dialog');
+    if (!dialog) return;
+
+    const dialogImg = dialog.querySelector('.dialog-img');
+    const dialogName = dialog.querySelector('#board-dialog-name');
+    const dialogRole = dialog.querySelector('.dialog-role');
+    const dialogBio = dialog.querySelector('.dialog-bio');
+
+    const openBio = (card) => {
+        const img = card.querySelector('.board-img');
+        const role = card.querySelector('span.accent');
+        dialogImg.src = img.src;
+        dialogImg.alt = img.alt;
+        dialogName.textContent = card.querySelector('h4').textContent;
+        dialogRole.textContent = role ? role.textContent : '';
+        dialogBio.innerHTML = card.querySelector('.board-bio').innerHTML;
+        dialog.showModal();
+        dialog.scrollTop = 0;
+    };
+
+    document.querySelectorAll('.board-card').forEach(card => {
+        card.addEventListener('click', () => openBio(card));
+        card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
+                openBio(card);
             }
         });
     });
+
+    dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+    // The dialog has no padding of its own, so a click whose target is the
+    // dialog element can only land on the ::backdrop
+    dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) dialog.close();
+    });
 });
-const toggleBio = (img) => {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    const card = img.closest('.board-card');
-    card.classList.toggle('active');
-    if (isMobile) {
-        // Mobile accordion style - expand bio within the card
-        document.querySelectorAll('.board-card').forEach(c => {
-            if (c !== card) {
-                c.classList.remove('open');
-                c.classList.remove('active');
-            }
-        });
-        card.classList.toggle('open');
 
-        // Scroll to the clicked card to ensure it's visible
-        // Only scroll if we're opening (not closing)
-        if (card.classList.contains('open')) {
-            setTimeout(() => {
-                const headerHeight = 80; // Fixed header height
-                const offset = 20; // Additional spacing from top
-                const y = card.getBoundingClientRect().top + window.scrollY - headerHeight - offset;
-                window.scrollTo({ top: y, behavior: 'smooth' });
-            }, 100); // Small delay to allow accordion animation to start
-        }
-    } else {
-        // Desktop: extract bio and show it in a shared container
-        // Remove active toggle on other cards
-        document.querySelectorAll('.board-card').forEach(c => {
-            if (c !== card) {
-                c.classList.remove('active');
-            }
-        });
-
-        const bio = card.querySelector('.board-bio');
-        const bioContainer = document.getElementById('board-bio-desktop');
-        const isAlreadyOpen = bioContainer.innerHTML === bio.innerHTML && bioContainer.style.display === 'block';
-        if (bio && bioContainer) {
-            if (isAlreadyOpen) {
-                bioContainer.innerHTML = '';
-                bioContainer.style.display = 'none';
-            } else {
-                bioContainer.innerHTML = bio.innerHTML;
-                bioContainer.style.display = 'block';
-
-                // Scroll to the desktop bio container
-                setTimeout(() => {
-                    const offset = -200; // Offset from top
-                    const y = bioContainer.getBoundingClientRect().top + window.scrollY + offset;
-                    window.scrollTo({ top: y, behavior: 'smooth' });
-                }, 100); // Small delay to allow content to render
-            }
-        }
-    }
-};
-
-// Fade in animation for elements
+// Fade in animation for elements (starts before entering the viewport so
+// fast scrollers never see blank sections; skipped under reduced motion)
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
+            fadeObserver.unobserve(entry.target);
         }
     });
 }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0,
+    rootMargin: '0px 0px 100px 0px'
 });
 
 // Apply fade animation to cards and sections
-const fadeElements = document.querySelectorAll('.service-card, .program-card, .testimonial-card, .about-text, .about-image, .board-card');
-fadeElements.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    fadeObserver.observe(element);
+if (!prefersReducedMotion) {
+    const fadeElements = document.querySelectorAll('.service-card, .program-card, .testimonial-card, .about-text, .about-image, .board-card');
+    fadeElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(16px)';
+        element.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        fadeObserver.observe(element);
+    });
+}
+
+// Click-to-load YouTube facades: swap the thumbnail button for the real
+// iframe only when the visitor asks for it (keeps initial page load light)
+document.querySelectorAll('.video-facade').forEach(facade => {
+    facade.addEventListener('click', function () {
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${this.dataset.videoId}?autoplay=1`;
+        iframe.title = (this.getAttribute('aria-label') || 'Video').replace('Play video: ', '');
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        this.replaceWith(iframe);
+    });
 });
 
 // Phone validation
