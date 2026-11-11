@@ -896,6 +896,17 @@ section {
     color: var(--cta-solid);
 }
 
+/* Headway booking button: keep btn-primary look over .contact-item link styles */
+.contact-item .schedule-btn,
+.contact-item .schedule-btn:hover,
+.contact-item .schedule-btn:focus {
+    color: white;
+}
+
+.contact-item .schedule-btn {
+    margin-top: 0.75rem;
+}
+
 .contact-item address {
     color: #666;
     font-style: normal;
