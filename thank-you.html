@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Sophia's Hope Ranch</title>
+
+    <!-- Post-donation page: keep out of search engines entirely. Not in sitemap.xml, not linked from the site. -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+    <meta name="referrer" content="no-referrer">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self';
+      style-src 'self' https://fonts.googleapis.com https://cdnjs.cloudflare.com;
+      font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com;
+      img-src 'self' data:;
+      connect-src 'self';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'none';
+    ">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="thank-you.css?v=3">
+</head>
+<body class="thank-you-page">
+<main id="main-content" role="main">
+    <!-- Sunrise over the ranch -->
+    <section class="ty-hero" aria-labelledby="ty-heading">
+        <svg class="ty-scene" viewBox="0 0 1440 560" preserveAspectRatio="xMidYMax slice" aria-hidden="true"
+             focusable="false">
+            <defs>
+                <linearGradient id="ty-sky" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#cfeaf3"/>
+                    <stop offset="55%" stop-color="#fdf1dc"/>
+                    <stop offset="100%" stop-color="#fde2b8"/>
+                </linearGradient>
+                <radialGradient id="ty-sun" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="#fff6d8"/>
+                    <stop offset="60%" stop-color="#ffd27a"/>
+                    <stop offset="100%" stop-color="#ffb84d"/>
+                </radialGradient>
+                <radialGradient id="ty-glow" cx="0.5" cy="0.5" r="0.5">
+                    <stop offset="0%" stop-color="#ffe3a3" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="#ffe3a3" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="ty-hill-far" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#8cc59a"/>
+                    <stop offset="100%" stop-color="#5fa871"/>
+                </linearGradient>
+                <linearGradient id="ty-hill-mid" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#27ae60"/>
+                    <stop offset="100%" stop-color="#1f8a4c"/>
+                </linearGradient>
+                <linearGradient id="ty-hill-near" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2c5530"/>
+                    <stop offset="100%" stop-color="#1e3d22"/>
+                </linearGradient>
+            </defs>
+
+            <rect width="1440" height="560" fill="url(#ty-sky)"/>
+
+            <!-- Rising sun -->
+            <g class="ty-sun">
+                <circle cx="720" cy="330" r="230" fill="url(#ty-glow)"/>
+                <circle cx="720" cy="330" r="95" fill="url(#ty-sun)"/>
+            </g>
+
+            <!-- Drifting clouds -->
+            <g class="ty-cloud ty-cloud-a" fill="#ffffff" opacity="0.85">
+                <ellipse cx="240" cy="120" rx="70" ry="22"/>
+                <ellipse cx="290" cy="106" rx="48" ry="26"/>
+                <ellipse cx="205" cy="110" rx="36" ry="18"/>
+            </g>
+            <g class="ty-cloud ty-cloud-b" fill="#ffffff" opacity="0.7">
+                <ellipse cx="1150" cy="80" rx="80" ry="20"/>
+                <ellipse cx="1200" cy="66" rx="50" ry="24"/>
+            </g>
+
+            <!-- Rolling hills -->
+            <path fill="url(#ty-hill-far)"
+                  d="M0 360 C 180 300, 360 330, 520 350 S 860 300, 1040 330 S 1320 300, 1440 320 L1440 560 L0 560 Z"/>
+            <path fill="url(#ty-hill-mid)"
+                  d="M0 420 C 220 370, 420 400, 640 410 S 1000 370, 1200 395 S 1380 400, 1440 390 L1440 560 L0 560 Z"/>
+
+            <!-- Fence along the middle hill -->
+            <g class="ty-fence" stroke="#1e3d22" stroke-width="5" stroke-linecap="round" opacity="0.55">
+                <line x1="880" y1="384" x2="880" y2="420"/>
+                <line x1="950" y1="380" x2="950" y2="416"/>
+                <line x1="1020" y1="378" x2="1020" y2="414"/>
+                <line x1="1090" y1="380" x2="1090" y2="416"/>
+                <line x1="1160" y1="386" x2="1160" y2="422"/>
+                <path d="M880 392 Q 1020 382 1160 394" fill="none"/>
+                <path d="M880 406 Q 1020 396 1160 408" fill="none"/>
+            </g>
+
+            <path fill="url(#ty-hill-near)"
+                  d="M0 480 C 260 440, 520 470, 760 475 S 1180 440, 1440 465 L1440 560 L0 560 Z"/>
+
+            <!-- Wildflowers -->
+            <g class="ty-flowers">
+                <circle cx="120" cy="500" r="5" fill="#ffd27a"/>
+                <circle cx="160" cy="512" r="4" fill="#fdf1dc"/>
+                <circle cx="300" cy="494" r="5" fill="#9fd8ee"/>
+                <circle cx="1250" cy="488" r="5" fill="#ffd27a"/>
+                <circle cx="1300" cy="502" r="4" fill="#fdf1dc"/>
+                <circle cx="1360" cy="490" r="5" fill="#9fd8ee"/>
+            </g>
+        </svg>
+
+        <!-- Hearts floating up from the sunrise -->
+        <div class="ty-hearts" aria-hidden="true">
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i>
+        </div>
+
+        <div class="ty-hero-content">
+            <img src="assets/horse.webp"
+                 alt="Sophia’s Hope Ranch Logo"
+                 class="ty-logo no-border"
+                 height="96"
+                 width="96"/>
+            <p class="ty-eyebrow">Your gift has been received</p>
+            <h1 id="ty-heading" class="serif accent">Thank you, from all of us.</h1>
+        </div>
+    </section>
+
+    <section class="ty-body" aria-label="A note of thanks">
+        <div class="container">
+            <article class="ty-letter">
+                <div class="ty-letter-text">
+                    <p class="ty-lead serif">
+                        Because of you, a family that has been carrying more than they can hold will find a place
+                        to set it down.
+                    </p>
+                    <p>
+                        Every gift to Sophia’s Hope Ranch becomes something real: a therapy session for a child
+                        learning that the adults around them can be trusted, a quiet afternoon with the horses
+                        where a parent and child reconnect, a family that leaves our gate with more hope than they
+                        arrived with.
+                    </p>
+                    <p class="ty-once-only">
+                        You didn’t have to give, and you chose to anyway. We don’t take that lightly. Please know
+                        that your generosity is already at work, and that you are now part of every story of
+                        healing that unfolds here.
+                    </p>
+                    <p class="ty-monthly-only" hidden>
+                        By choosing to give every month, you’ve done something especially powerful: you’ve given
+                        us steadiness. Healing doesn’t happen in a single day, and your ongoing support lets us say
+                        “yes” to families with confidence, knowing we can walk with them for as long as it takes.
+                        You are now part of every story of healing that unfolds here.
+                    </p>
+
+                    <blockquote class="ty-verse">
+                        <p class="serif">“A generous person will prosper; whoever refreshes others will be
+                            refreshed.”</p>
+                        <cite>Proverbs 11:25</cite>
+                    </blockquote>
+
+                    <p class="ty-signoff">With deep gratitude,</p>
+                    <p class="ty-signature serif">Theresa Schultz</p>
+                    <p class="ty-signature-title">Founder, Sophia’s Hope Ranch</p>
+                </div>
+
+                <figure class="ty-photo">
+                    <img src="assets/images/girl-hugging-horse.webp"
+                         alt="A girl hugging a horse at the ranch"
+                         loading="lazy"
+                         class="no-border"/>
+                </figure>
+            </article>
+
+            <div class="ty-impact" aria-label="What your gift supports">
+                <div class="ty-impact-item">
+                    <span class="ty-impact-icon"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></span>
+                    <h2 class="serif accent">Therapy</h2>
+                    <p>Individual, family, and play therapy for those healing from trauma.</p>
+                </div>
+                <div class="ty-impact-item">
+                    <span class="ty-impact-icon"><i class="fas fa-horse" aria-hidden="true"></i></span>
+                    <h2 class="serif accent">The Ranch</h2>
+                    <p>A safe, peaceful place where connection and trust can grow.</p>
+                </div>
+                <div class="ty-impact-item">
+                    <span class="ty-impact-icon"><i class="fas fa-people-roof" aria-hidden="true"></i></span>
+                    <h2 class="serif accent">Families</h2>
+                    <p>Restoring attachment so families can thrive together.</p>
+                </div>
+            </div>
+
+            <div class="ty-receipt">
+                <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+                <p>
+                    A receipt is on its way to your inbox. Sophia’s Hope Ranch is a 501(c)(3) nonprofit, so please
+                    keep it for your tax records.
+                    <span class="ty-monthly-only" hidden>You can update or cancel your monthly gift anytime using
+                        the link in your receipt.</span>
+                </p>
+            </div>
+
+            <div class="ty-actions">
+                <a href="index.html" class="btn btn-primary" rel="nofollow">Return to Sophia’s Hope Ranch</a>
+                <div class="ty-social">
+                    <span>Follow along as your gift makes a difference</span>
+                    <div class="ty-social-links">
+                        <a href="https://www.facebook.com/profile.php?id=61565293413895"
+                           rel="nofollow noopener noreferrer" target="_blank"
+                           aria-label="Follow us on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/sophiashoperanch"
+                           rel="nofollow noopener noreferrer" target="_blank"
+                           aria-label="Follow us on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="ty-footer" role="contentinfo">
+    <p>&copy; <span id="copyright-year">2026</span> Sophia's Hope Ranch. All rights reserved.</p>
+</footer>
+
+<script src="thank-you.js?v=1"></script>
+</body>
+</html>

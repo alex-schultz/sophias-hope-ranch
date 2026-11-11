@@ -1,0 +1,350 @@
+/* Thank-you page (post-donation). Builds on styles.css brand tokens. */
+.thank-you-page {
+    background: #fffdf8;
+}
+
+/* Hero: sunrise over the ranch */
+.ty-hero {
+    position: relative;
+    min-height: 78vh;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    background: #fde2b8;
+}
+
+.ty-scene {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ty-sun {
+    transform-origin: 720px 330px;
+    animation: ty-rise 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ty-cloud-a {
+    animation: ty-drift 40s linear infinite alternate;
+}
+
+.ty-cloud-b {
+    animation: ty-drift 55s linear infinite alternate-reverse;
+}
+
+.ty-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 9vh 16px 0;
+    max-width: 760px;
+    animation: ty-fade-up 1.2s 0.4s ease both;
+}
+
+.ty-logo {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: white;
+    padding: 8px;
+    box-shadow: 0 10px 30px rgba(44, 85, 48, 0.2);
+    margin-bottom: 1.25rem;
+}
+
+.ty-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--cta-solid);
+    margin-bottom: 0.75rem;
+}
+
+.ty-hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    text-wrap: balance;
+    line-height: 1.1;
+}
+
+/* Floating hearts */
+.ty-hearts {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.ty-hearts i {
+    position: absolute;
+    bottom: 22%;
+    color: #e86a7a;
+    opacity: 0;
+    animation: ty-float 7s ease-in infinite;
+}
+
+.ty-hearts i:nth-child(1) { left: 42%; font-size: 1rem;   animation-delay: 0.8s; }
+.ty-hearts i:nth-child(2) { left: 50%; font-size: 1.4rem; animation-delay: 2.2s; color: #f29aa5; }
+.ty-hearts i:nth-child(3) { left: 57%; font-size: 0.9rem; animation-delay: 3.4s; }
+.ty-hearts i:nth-child(4) { left: 46%; font-size: 1.2rem; animation-delay: 4.6s; color: #ffb84d; }
+.ty-hearts i:nth-child(5) { left: 54%; font-size: 1rem;   animation-delay: 5.8s; color: #f29aa5; }
+.ty-hearts i:nth-child(6) { left: 38%; font-size: 0.8rem; animation-delay: 6.6s; }
+
+/* Body */
+.ty-body {
+    padding: 0 0 80px;
+}
+
+.ty-letter {
+    position: relative;
+    z-index: 3;
+    margin: -90px auto 0;
+    max-width: 820px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(44, 85, 48, 0.12);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ty-letter-text {
+    padding: 3rem;
+}
+
+.ty-letter-text p {
+    color: var(--text);
+    margin-bottom: 1.1rem;
+}
+
+.ty-lead {
+    font-size: 1.45rem;
+    line-height: 1.45;
+    color: var(--brand) !important;
+}
+
+.ty-verse {
+    margin: 1.75rem 0;
+    padding: 1.25rem 1.5rem;
+    border-left: 4px solid var(--brand-bright);
+    background: var(--surface-alt);
+    border-radius: 0 12px 12px 0;
+}
+
+.ty-verse p {
+    font-style: italic;
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem !important;
+}
+
+.ty-verse cite {
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.ty-signoff {
+    margin-bottom: 0.25rem !important;
+}
+
+.ty-signature {
+    font-size: 1.6rem;
+    font-style: italic;
+    color: var(--brand) !important;
+    margin-bottom: 0 !important;
+}
+
+.ty-signature-title {
+    font-size: 0.9rem;
+    color: var(--text-muted) !important;
+}
+
+.ty-photo {
+    margin: 0;
+    position: relative;
+    order: -1;
+    aspect-ratio: 1024 / 642; /* full photo, no cropping */
+}
+
+.ty-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ty-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.25), transparent 30%);
+}
+
+/* What your gift supports */
+.ty-impact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 4rem auto 3rem;
+    text-align: center;
+}
+
+.ty-impact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--brand-gradient);
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.ty-impact h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.ty-impact p {
+    color: var(--text-muted);
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+/* Receipt note */
+.ty-receipt {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    padding: 1.25rem 1.5rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.ty-receipt i {
+    font-size: 1.4rem;
+    color: var(--brand-bright);
+    margin-top: 0.2rem;
+}
+
+.ty-receipt p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Actions */
+.ty-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.ty-social span {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.ty-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.ty-social-links a {
+    display: inline-flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--brand);
+    color: var(--brand);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.ty-social-links a:hover,
+.ty-social-links a:focus-visible {
+    background: var(--brand);
+    color: white;
+}
+
+.ty-footer {
+    background: var(--brand);
+    color: white;
+    text-align: center;
+    padding: 1.25rem 16px;
+    font-size: 0.9rem;
+}
+
+/* Animations */
+@keyframes ty-rise {
+    from { transform: translateY(160px); opacity: 0.4; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes ty-drift {
+    from { transform: translateX(-40px); }
+    to { transform: translateX(40px); }
+}
+
+@keyframes ty-fade-up {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes ty-float {
+    0% { transform: translateY(0) scale(0.6); opacity: 0; }
+    15% { opacity: 0.9; }
+    100% { transform: translateY(-55vh) scale(1.1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ty-sun,
+    .ty-cloud-a,
+    .ty-cloud-b,
+    .ty-hero-content {
+        animation: none;
+    }
+
+    .ty-hearts {
+        display: none;
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .ty-hero {
+        min-height: 64vh;
+    }
+
+    .ty-letter {
+        margin-top: -60px;
+    }
+
+    .ty-letter-text {
+        padding: 2rem 1.5rem;
+    }
+
+    .ty-lead {
+        font-size: 1.25rem;
+    }
+
+    .ty-impact {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}

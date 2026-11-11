@@ -85,7 +85,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Bump ?v= on styles.css/script.js whenever they change, so cached copies can't pair stale assets with new HTML -->
-    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
 <!-- Skip to main content for accessibility -->
@@ -782,6 +782,17 @@
             <div class="donate-grid">
                 <div class="donate-card">
                     <div class="donate-icon">
+                        <i class="fas fa-credit-card" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="accent serif">Card or Bank</h3>
+                    <p>Give securely by credit card, debit card, or bank transfer</p>
+                    <a href="#" class="btn btn-primary donate-btn" data-payment="stripe"
+                       aria-label="Donate by card or bank transfer">
+                        Donate Now
+                    </a>
+                </div>
+                <div class="donate-card">
+                    <div class="donate-icon">
                         <i class="fab fa-cc-paypal" aria-hidden="true"></i>
                     </div>
                     <h3 class="accent serif">Venmo</h3>
@@ -887,6 +898,6 @@
     </div>
 </footer>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>

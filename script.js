@@ -502,6 +502,9 @@ document.querySelectorAll('section[aria-labelledby]').forEach(section => {
     sectionObserver.observe(section);
 });
 
+// Stripe Payment Link (donor chooses amount)
+const STRIPE_DONATE_URL = 'https://donate.stripe.com/5kQfZg120eFe8KDg5M0Ny00';
+
 // Consolidated DOMContentLoaded handler for donate buttons and flyer viewer
 document.addEventListener('DOMContentLoaded', () => {
     // Donate button handler with mobile app detection
@@ -531,6 +534,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Desktop: open Venmo web
                     url = 'https://www.venmo.com/u/sophiashoperanch';
                 }
+            } else if (paymentType === 'stripe') {
+                // Stripe Payment Link (hosted page handles cards, ACH, Apple/Google Pay)
+                url = STRIPE_DONATE_URL;
             } else if (paymentType === 'cashapp') {
                 // Cash App URL works universally and opens app on mobile automatically
                 url = 'https://cash.app/$sophiashoperanch';
