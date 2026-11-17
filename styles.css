@@ -216,6 +216,21 @@ img {
     font-weight: 600;
 }
 
+.logo-link {
+    display: flex;
+}
+
+/* horse.webp has ~24% transparent padding on every side. Pull the image in
+   horizontally by that amount so the visible circle, not the empty box,
+   lines up with the page content and sits next to the site name. */
+.logo .site-logo {
+    margin: 0 -19px;
+}
+
+.footer-logo .site-logo {
+    margin: 0 -18px;
+}
+
 .required {
     color: #e74c3c;
 }
