@@ -2,6 +2,20 @@
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
 
+const closeNavMenu = () => {
+    if (navMenu.classList.contains('active')) {
+        // The menu stays visible for its 0.3s slide-out; inert keeps its links
+        // unfocusable during that window. CSS visibility takes over afterwards.
+        navMenu.inert = true;
+        setTimeout(() => {
+            navMenu.inert = false;
+        }, 350);
+    }
+    navMenu.classList.remove('active');
+    navToggle.classList.remove('active');
+    navToggle.setAttribute('aria-expanded', 'false');
+};
+
 navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
     navToggle.classList.toggle('active');
@@ -14,26 +28,21 @@ navToggle.addEventListener('click', () => {
 // Close mobile menu when clicking on a link
 const navLinks = document.querySelectorAll('.nav-menu a');
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', closeNavMenu);
 });
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+// Close the mobile menu when keyboard focus tabs out of the header, so focus
+// never ends up on page content hidden behind the open menu
+document.querySelector('.header').addEventListener('focusout', (e) => {
+    if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget)) {
+        closeNavMenu();
+    }
 });
+
+// In-page (#) links are left to the browser on purpose: native fragment
+// navigation moves keyboard focus to the target (the skip link depends on it),
+// and smooth scrolling comes from CSS scroll-behavior, which honours
+// prefers-reduced-motion. Do not preventDefault() them.
 
 // Header background on scroll
 const header = document.querySelector('.header');
@@ -53,11 +62,10 @@ window.addEventListener('scroll', () => {
     lastScrollY = currentScrollY;
 });
 
-// Animated counters for statistics
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px 0px -100px 0px'
-};
+// Animated counters for statistics. The real value is in the HTML; when motion
+// is allowed, a screen-reader-only copy keeps that value available while the
+// visible (aria-hidden) number counts up from zero.
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const animateCounter = (element) => {
     const target = parseInt(element.getAttribute('data-target'));
@@ -78,22 +86,29 @@ const animateCounter = (element) => {
     updateCounter();
 };
 
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const counter = entry.target;
-            if (!counter.classList.contains('animated')) {
-                counter.classList.add('animated');
-                animateCounter(counter);
+if (!reduceMotion && 'IntersectionObserver' in window) {
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                counterObserver.unobserve(entry.target);
+                animateCounter(entry.target);
             }
-        }
+        });
+    }, {
+        threshold: 0.5,
+        rootMargin: '0px 0px -100px 0px'
     });
-}, observerOptions);
 
-// Observe all stat numbers
-document.querySelectorAll('.stat-number').forEach(counter => {
-    counterObserver.observe(counter);
-});
+    document.querySelectorAll('.stat-number').forEach(counter => {
+        const srValue = document.createElement('span');
+        srValue.className = 'sr-only';
+        srValue.textContent = counter.getAttribute('data-target');
+        counter.after(srValue);
+        counter.setAttribute('aria-hidden', 'true');
+        counter.textContent = '0';
+        counterObserver.observe(counter);
+    });
+}
 
 // Footer copyright year, kept current automatically
 const copyrightYearEl = document.getElementById('copyright-year');
@@ -116,21 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const role = card.querySelector('span.accent');
         dialogImg.src = img.src;
         dialogImg.alt = img.alt;
-        dialogName.textContent = card.querySelector('h4').textContent;
+        dialogName.textContent = card.querySelector('h3').textContent;
         dialogRole.textContent = role ? role.textContent : '';
         dialogBio.innerHTML = card.querySelector('.board-bio').innerHTML;
         dialog.showModal();
         dialog.scrollTop = 0;
     };
 
+    // Mouse users can click anywhere on the card; keyboard and screen-reader
+    // users use the card's "Read Bio" <button>, whose click bubbles up to here
     document.querySelectorAll('.board-card').forEach(card => {
         card.addEventListener('click', () => openBio(card));
-        card.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openBio(card);
-            }
-        });
     });
 
     dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
@@ -143,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Fade in animation for elements (starts before entering the viewport so
 // fast scrollers never see blank sections; skipped under reduced motion)
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = reduceMotion;
 const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -178,6 +189,7 @@ document.querySelectorAll('.video-facade').forEach(facade => {
         iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
         iframe.allowFullscreen = true;
         this.replaceWith(iframe);
+        iframe.focus(); // the button that had focus is gone; keep keyboard users on the video
     });
 });
 
@@ -201,9 +213,88 @@ document.getElementById("phone").addEventListener("input", function (e) {
     input.value = formatted;
 });
 
+// Form errors: every invalid field gets its own text message, linked to the
+// field with aria-describedby and flagged with aria-invalid (never colour alone)
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const setFieldError = (input, message) => {
+    const group = input.closest('.form-group');
+    const hint = group.querySelector('.field-hint');
+    let errorEl = group.querySelector('.field-error');
+
+    if (message) {
+        if (!errorEl) {
+            errorEl = document.createElement('p');
+            errorEl.className = 'field-error';
+            errorEl.id = `${input.id}-error`;
+            group.appendChild(errorEl);
+        }
+        errorEl.textContent = message;
+        input.setAttribute('aria-invalid', 'true');
+    } else {
+        if (errorEl) errorEl.remove();
+        input.removeAttribute('aria-invalid');
+    }
+
+    const describedBy = [hint && hint.id, message && errorEl.id].filter(Boolean).join(' ');
+    if (describedBy) {
+        input.setAttribute('aria-describedby', describedBy);
+    } else {
+        input.removeAttribute('aria-describedby');
+    }
+};
+
+// Runs each field's check, shows the messages, and moves focus to the first
+// invalid field. Returns true when everything is valid.
+const validateFields = (form, checks) => {
+    let firstInvalid = null;
+    let errorCount = 0;
+
+    Object.keys(checks).forEach(fieldName => {
+        const input = form.querySelector(`[name="${fieldName}"]`);
+        const message = checks[fieldName](input.value.trim());
+        setFieldError(input, message);
+        if (message) {
+            errorCount++;
+            if (!firstInvalid) firstInvalid = input;
+        }
+    });
+
+    const statusEl = form.querySelector('.form-status');
+    if (firstInvalid) {
+        statusEl.textContent = errorCount === 1
+            ? 'Please correct the error above and try again.'
+            : `Please correct the ${errorCount} errors above and try again.`;
+        firstInvalid.focus();
+        return false;
+    }
+    statusEl.textContent = '';
+    return true;
+};
+
+// Clear a field's error as soon as the visitor starts correcting it
+const clearErrorsOnInput = (form) => {
+    form.addEventListener('input', (e) => {
+        if (e.target.getAttribute('aria-invalid') === 'true') {
+            setFieldError(e.target, '');
+        }
+    });
+};
+
+const emailCheck = (value) => {
+    if (!value) return 'Enter your email address.';
+    if (!EMAIL_REGEX.test(value)) return 'Enter an email address in the format name@example.com.';
+    return '';
+};
+
 // Form submission handling (Web3Forms)
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
+    // Validation below replaces the browser's own bubbles (which accept
+    // whitespace-only answers); without JS the native checks still apply
+    contactForm.noValidate = true;
+    clearErrorsOnInput(contactForm);
+
     contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
@@ -214,34 +305,14 @@ if (contactForm) {
             formObject[key] = value;
         });
 
-        // Simple form validation
-        const requiredFields = ['name', 'email', 'subject', 'message'];
-        let isValid = true;
-
-        requiredFields.forEach(field => {
-            const input = this.querySelector(`[name="${field}"]`);
-            if (!formObject[field] || formObject[field].trim() === '') {
-                input.style.borderColor = '#e74c3c';
-                isValid = false;
-            } else {
-                input.style.borderColor = '#e0e0e0';
-            }
+        const isValid = validateFields(this, {
+            name: value => value ? '' : 'Enter your full name.',
+            email: emailCheck,
+            phone: value => /^\(\d{3}\) \d{3}-\d{4}$/.test(value)
+                ? '' : 'Enter a 10-digit phone number, for example (210) 123-1234.',
+            subject: value => value ? '' : 'Select a subject.',
+            message: value => value ? '' : 'Enter your message.'
         });
-        // Phone number validation
-        const phoneRegex = /^\(\d{3}\) \d{3}-\d{4}$/;
-        const phoneInput = this.querySelector('[name="phone"]');
-        if (!phoneRegex.test(formObject.phone)) {
-            phoneInput.style.borderColor = '#e74c3c';
-            isValid = false;
-        }
-
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const emailInput = this.querySelector('[name="email"]');
-        if (!emailRegex.test(formObject.email)) {
-            emailInput.style.borderColor = '#e74c3c';
-            isValid = false;
-        }
 
         if (isValid) {
             const name = formObject.name.trim();
@@ -286,14 +357,14 @@ if (contactForm) {
 
                 // Show success message
                 submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.background = '#27ae60';
+                submitBtn.classList.add('btn-success');
                 statusEl.textContent = "Thank you! Your message has been sent. We'll be in touch soon.";
 
                 // Reset form after 4 seconds
                 setTimeout(() => {
                     this.reset();
                     submitBtn.textContent = originalText;
-                    submitBtn.style.background = '';
+                    submitBtn.classList.remove('btn-success');
                     submitBtn.disabled = false;
                 }, 4000);
             } catch (err) {
@@ -305,17 +376,6 @@ if (contactForm) {
                 fallback.textContent = 'Click here to email us directly instead.';
                 statusEl.appendChild(fallback);
             }
-        } else {
-            // Show error message
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Please fill all required fields';
-            submitBtn.style.background = '#e74c3c';
-
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
-            }, 1000);
         }
     });
 }
@@ -329,20 +389,19 @@ const ML_ACCOUNT_ID = '2524205';
 const ML_FORM_ID = '193638968839898489';
 const newsletterForm = document.querySelector('.newsletter-form');
 if (newsletterForm) {
+    newsletterForm.noValidate = true; // same text-based validation as the contact form
+    clearErrorsOnInput(newsletterForm);
+
     newsletterForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         const emailInput = this.querySelector('input[name="email"]');
         const statusEl = this.querySelector('.form-status');
         const submitBtn = this.querySelector('button[type="submit"]');
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        if (!emailRegex.test(emailInput.value.trim())) {
-            emailInput.style.borderColor = '#e74c3c';
-            statusEl.textContent = 'Please enter a valid email address.';
+        if (!validateFields(this, {email: emailCheck})) {
             return;
         }
-        emailInput.style.borderColor = '#e0e0e0';
 
         const originalText = submitBtn.textContent;
         submitBtn.disabled = true;
@@ -365,13 +424,13 @@ if (newsletterForm) {
             }
 
             submitBtn.textContent = 'Subscribed!';
-            submitBtn.style.background = '#27ae60';
+            submitBtn.classList.add('btn-success');
             statusEl.textContent = 'Thanks for subscribing! Please check your inbox to confirm.';
             this.reset();
 
             setTimeout(() => {
                 submitBtn.textContent = originalText;
-                submitBtn.style.background = '';
+                submitBtn.classList.remove('btn-success');
                 submitBtn.disabled = false;
             }, 4000);
         } catch (err) {
@@ -386,9 +445,7 @@ if (newsletterForm) {
 document.addEventListener('keydown', function (e) {
     // Escape key closes mobile menu
     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-        navToggle.setAttribute('aria-expanded', 'false');
+        closeNavMenu();
         navToggle.focus();
     }
 });
@@ -466,87 +523,26 @@ const debouncedScrollHandler = debounce(() => {
 
 window.addEventListener('scroll', debouncedScrollHandler);
 
-// Accessibility: Announce page changes for screen readers
-const announcePageChange = (message) => {
-    const announcement = document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.className = 'sr-only';
-    announcement.textContent = message;
-    document.body.appendChild(announcement);
-
-    setTimeout(() => {
-        document.body.removeChild(announcement);
-    }, 1000);
-};
-
-// Announce when sections come into view
-const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const sectionName = entry.target.getAttribute('aria-labelledby');
-            if (sectionName) {
-                const heading = document.getElementById(sectionName);
-                if (heading) {
-                    announcePageChange(`Now viewing ${heading.textContent} section`);
-                }
-            }
-        }
-    });
-}, {
-    threshold: 0.5
-});
-
-// Observe main sections
-document.querySelectorAll('section[aria-labelledby]').forEach(section => {
-    sectionObserver.observe(section);
-});
-
-// Stripe Payment Link (donor chooses amount)
-const STRIPE_DONATE_URL = 'https://donate.stripe.com/5kQfZg120eFe8KDg5M0Ny00';
-
 // Consolidated DOMContentLoaded handler for donate buttons and flyer viewer
 document.addEventListener('DOMContentLoaded', () => {
-    // Donate button handler with mobile app detection
-    const donateButtons = document.querySelectorAll('.donate-btn');
+    // The donate buttons are ordinary links (URLs live in index.html) that open
+    // in a new tab. The one exception: on phones, try the Venmo app first.
+    const venmoButton = document.querySelector('.donate-btn[data-payment="venmo"]');
 
-    donateButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            const paymentType = button.getAttribute('data-payment');
+    if (venmoButton) {
+        venmoButton.addEventListener('click', (e) => {
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            if (!isMobile) return;
 
-            let url;
-
-            if (paymentType === 'venmo') {
-                if (isMobile) {
-                    // Try to open Venmo app first, fallback to web
-                    url = 'venmo://paycharge?txn=pay&recipients=sophiashoperanch';
-                    // Set a timeout to redirect to web version if app doesn't open
-                    const webUrl = 'https://www.venmo.com/u/sophiashoperanch';
-                    window.location.href = url;
-                    setTimeout(() => {
-                        window.location.href = webUrl;
-                    }, 1500);
-                    return;
-                } else {
-                    // Desktop: open Venmo web
-                    url = 'https://www.venmo.com/u/sophiashoperanch';
-                }
-            } else if (paymentType === 'stripe') {
-                // Stripe Payment Link (hosted page handles cards, ACH, Apple/Google Pay)
-                url = STRIPE_DONATE_URL;
-            } else if (paymentType === 'cashapp') {
-                // Cash App URL works universally and opens app on mobile automatically
-                url = 'https://cash.app/$sophiashoperanch';
-            }
-
-            if (url) {
-                window.open(url, '_blank', 'noopener,noreferrer');
-            }
+            e.preventDefault();
+            const webUrl = venmoButton.href;
+            window.location.href = 'venmo://paycharge?txn=pay&recipients=sophiashoperanch';
+            // Fall back to the web profile if the app doesn't open
+            setTimeout(() => {
+                window.location.href = webUrl;
+            }, 1500);
         });
-    });
+    }
 
     // Flyer view handler - prevents auto-download on Windows
     const flyerLink = document.querySelector('.view-flyer-link');

@@ -27,12 +27,14 @@
     animation: ty-rise 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
+/* All motion on this page plays once and ends within 5 seconds (WCAG 2.2.2):
+   anything that loops or runs longer needs a visible pause control. */
 .ty-cloud-a {
-    animation: ty-drift 40s linear infinite alternate;
+    animation: ty-drift 4.5s ease-out both;
 }
 
 .ty-cloud-b {
-    animation: ty-drift 55s linear infinite alternate-reverse;
+    animation: ty-drift 4.5s ease-out reverse both;
 }
 
 .ty-hero-content {
@@ -59,7 +61,7 @@
     letter-spacing: 0.18em;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--cta-solid);
+    color: #14596d; /* 6.2:1 on the sky; --cta-solid is only 4.1:1 here */
     margin-bottom: 0.75rem;
 }
 
@@ -82,15 +84,15 @@
     bottom: 22%;
     color: #e86a7a;
     opacity: 0;
-    animation: ty-float 7s ease-in infinite;
+    animation: ty-float 3s ease-in 1; /* one pass; last heart finishes at 4.8s */
 }
 
-.ty-hearts i:nth-child(1) { left: 42%; font-size: 1rem;   animation-delay: 0.8s; }
-.ty-hearts i:nth-child(2) { left: 50%; font-size: 1.4rem; animation-delay: 2.2s; color: #f29aa5; }
-.ty-hearts i:nth-child(3) { left: 57%; font-size: 0.9rem; animation-delay: 3.4s; }
-.ty-hearts i:nth-child(4) { left: 46%; font-size: 1.2rem; animation-delay: 4.6s; color: #ffb84d; }
-.ty-hearts i:nth-child(5) { left: 54%; font-size: 1rem;   animation-delay: 5.8s; color: #f29aa5; }
-.ty-hearts i:nth-child(6) { left: 38%; font-size: 0.8rem; animation-delay: 6.6s; }
+.ty-hearts i:nth-child(1) { left: 42%; font-size: 1rem;   animation-delay: 0.3s; }
+.ty-hearts i:nth-child(2) { left: 50%; font-size: 1.4rem; animation-delay: 0.6s; color: #f29aa5; }
+.ty-hearts i:nth-child(3) { left: 57%; font-size: 0.9rem; animation-delay: 0.9s; }
+.ty-hearts i:nth-child(4) { left: 46%; font-size: 1.2rem; animation-delay: 1.2s; color: #ffb84d; }
+.ty-hearts i:nth-child(5) { left: 54%; font-size: 1rem;   animation-delay: 1.5s; color: #f29aa5; }
+.ty-hearts i:nth-child(6) { left: 38%; font-size: 0.8rem; animation-delay: 1.8s; }
 
 /* Body */
 .ty-body {

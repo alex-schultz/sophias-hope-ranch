@@ -3,11 +3,16 @@
     --brand: #2c5530;          /* deep forest green: headings, accents, decorative icons */
     --brand-bright: #27ae60;   /* lively green: highlights, icons, stats, success */
     --brand-gradient: linear-gradient(135deg, #2c5530, #27ae60);
-    --cta: linear-gradient(135deg, #1f7790, deepskyblue); /* logo blue gradient: filled CTAs (buttons, play badge) */
+    --brand-bright-text: #239f56; /* brand-bright nudged darker for LARGE text only (3.2:1 on #f8f9fa; large text needs 3:1) */
+    --brand-on-dark: #c4f7da;  /* pale green for large text over the hero wash (3.2:1+ worst case) */
+    --cta: linear-gradient(135deg, #2a9fcb, deepskyblue); /* bright logo-blue gradient: filled CTAs (buttons, play badge) */
+    --cta-text: #06202a; /* dark navy label on --cta: 5.5:1 at the darker end, 7.9:1 at the lighter. White text fails on this blue */
     --cta-solid: #1f7790; /* solid logo blue for clickable text + underlines (5.1:1 on white); blue = interactive throughout */
     --text: #333;
     --text-muted: #666;
     --surface-alt: #f8f9fa;
+    --error: #c0392b;          /* error text + invalid field borders (5.4:1 on white) */
+    --field-border: #808080;   /* form field borders need 3:1 against white */
 }
 
 /* Reset and Base Styles */
@@ -19,6 +24,30 @@
 
 html {
     scroll-behavior: smooth;
+    /* Keep keyboard-focused elements from scrolling underneath the fixed 80px header */
+    scroll-padding-top: 80px;
+}
+
+/* Sections carry their own top padding for the header, so in-page links still land flush with the top */
+main,
+section {
+    scroll-margin-top: -80px;
+}
+
+/* Visible keyboard focus everywhere; white ring on the dark hero and footer */
+:focus-visible {
+    outline: 3px solid var(--cta-solid);
+    outline-offset: 2px;
+}
+
+.hero :focus-visible,
+.footer :focus-visible {
+    outline-color: #fff;
+}
+
+/* <main> is only focusable so the skip link can land on it */
+main:focus {
+    outline: none;
 }
 
 body {
@@ -71,14 +100,14 @@ img {
 /* Skip Link for Accessibility */
 .skip-link {
     position: absolute;
-    top: -40px;
+    top: -60px; /* fully off-screen until focused (it now sits above the header) */
     left: 6px;
     background: #000;
     color: #fff;
     padding: 8px;
     text-decoration: none;
     border-radius: 4px;
-    z-index: 1000;
+    z-index: 1001; /* above the fixed header */
     transition: top 0.3s;
 }
 
@@ -135,7 +164,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--cta-text);
     font-size: 1.25rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transition: transform 0.2s ease;
@@ -232,7 +261,7 @@ img {
 }
 
 .required {
-    color: #e74c3c;
+    color: var(--error);
 }
 
 .nav-menu {
@@ -268,6 +297,18 @@ img {
 .nav-menu a:hover::after,
 .nav-menu a:focus::after {
     width: 100%;
+}
+
+/* The Donate button inside the menu keeps its button colours: the link rules
+   above would otherwise put dark (or blue-on-blue) text on the blue button */
+.nav-menu a.btn-primary,
+.nav-menu a.btn-primary:hover,
+.nav-menu a.btn-primary:focus {
+    color: var(--cta-text);
+}
+
+.nav-menu a.btn-primary::after {
+    display: none;
 }
 
 .nav-toggle {
@@ -323,9 +364,9 @@ img {
     .hero::before {
         background: linear-gradient(
             to bottom,
-            rgba(28, 56, 31, 0.6) 0%,
-            rgba(28, 56, 31, 0.38) 45%,
-            rgba(28, 56, 31, 0.62) 100%
+            rgba(28, 56, 31, 0.64) 0%,
+            rgba(28, 56, 31, 0.6) 45%, /* 0.6 is the floor for 3:1 over the sun */
+            rgba(28, 56, 31, 0.66) 100%
         );
     }
 }
@@ -337,6 +378,9 @@ img {
     left: 0;
     right: 0;
     bottom: 0;
+    /* Original wash. Hero text stays legal on it only because every piece is
+       "large text" (24px+, or 18.66px+ bold), which needs 3:1 instead of 4.5:1.
+       Don't lighten this or shrink the hero text without re-checking contrast. */
     background: rgba(44, 85, 48, 0.7);
     z-index: 1;
 }
@@ -362,7 +406,7 @@ img {
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #fff;
     margin-bottom: 2rem;
     animation: fadeInUp 1s ease-out 0.2s both;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
@@ -372,7 +416,7 @@ img {
 }
 
 .hero-subtitle-2 {
-    font-size: 1.25rem;
+    font-size: 1.5rem; /* 24px = "large text" for contrast purposes */
 }
 
 .hero-buttons {
@@ -388,7 +432,7 @@ img {
 }
 
 .highlight {
-    color: var(--brand-bright);
+    color: var(--brand-on-dark);
 }
 
 /* Buttons */
@@ -407,8 +451,14 @@ img {
 
 .btn-primary {
     background: var(--cta);
-    color: white;
+    color: var(--cta-text);
     box-shadow: 0 4px 15px rgba(31, 119, 144, 0.35);
+}
+
+/* Temporary "Message Sent!" / "Subscribed!" state set by script.js */
+.btn-primary.btn-success {
+    background: var(--brand);
+    color: white;
 }
 
 .btn-primary:hover,
@@ -418,7 +468,7 @@ img {
 }
 
 .btn-secondary {
-    background: transparent;
+    background: rgba(18, 40, 22, 0.55); /* own backing so its 16px label passes over the photo */
     color: white;
     border: 2px solid white;
 }
@@ -526,7 +576,7 @@ section {
     display: block;
     font-size: 3rem;
     font-weight: 700;
-    color: var(--brand-bright);
+    color: var(--brand-bright-text);
     font-family: 'Playfair Display', serif;
 }
 
@@ -534,7 +584,7 @@ section {
     display: flex;
     justify-content: center;
     font-size: 3rem;
-    color: var(--brand-bright);
+    color: var(--brand-bright-text);
 }
 
 .stat-label {
@@ -567,7 +617,10 @@ section {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
-    margin-top: 2rem;
+    /* Wide enough for three 260px cards and two gaps, so the six members sit
+       in two rows of three; narrower screens still wrap to two and one */
+    max-width: calc(3 * 260px + 2rem);
+    margin: 2rem auto 0;
 }
 
 .board-card {
@@ -597,17 +650,23 @@ section {
     object-fit: cover;
 }
 
-.board-card h4 {
+.board-card h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
 }
 
+/* The real keyboard/screen-reader control for a card (the whole card is also clickable by mouse) */
 .bio-hint {
     display: block;
-    margin-top: 0.75rem;
+    margin: 0.5rem auto 0;
+    padding: 0.25rem 0.75rem;
+    background: none;
+    border: none;
+    font-family: inherit;
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--brand);
+    cursor: pointer;
 }
 
 /* Bio markup inside cards is only the data source for the modal */
@@ -685,7 +744,7 @@ section {
     flex-shrink: 0;
 }
 
-.dialog-header h4 {
+.dialog-header h3 {
     font-size: 1.4rem;
     margin-bottom: 0.25rem;
 }
@@ -925,7 +984,7 @@ section {
 
 .contact-item a {
     color: #666;
-    text-decoration: none;
+    text-decoration: underline;
     transition: color 0.3s ease;
 }
 
@@ -938,11 +997,12 @@ section {
 .contact-item .schedule-btn,
 .contact-item .schedule-btn:hover,
 .contact-item .schedule-btn:focus {
-    color: white;
+    color: var(--cta-text);
 }
 
 .contact-item .schedule-btn {
     margin-top: 0.75rem;
+    text-decoration: none;
 }
 
 .contact-item address {
@@ -984,7 +1044,7 @@ section {
 .form-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--field-border);
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -994,8 +1054,25 @@ section {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-    outline: none;
     border-color: #2c5530;
+}
+
+.form-group [aria-invalid="true"] {
+    border-color: var(--error);
+}
+
+.field-hint {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Inline error text added by script.js next to the field it describes */
+.field-error {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--error);
 }
 
 .form-group textarea {
@@ -1146,7 +1223,7 @@ section {
     margin-bottom: 1.5rem;
 }
 
-.footer-section h4 {
+.footer-section h2 {
     font-family: 'Playfair Display', serif;
     font-size: 1.2rem;
     margin-bottom: 1rem;
@@ -1196,7 +1273,7 @@ section {
 
 .social-links a:hover,
 .social-links a:focus {
-    background: var(--brand-bright);
+    background: var(--cta-solid);
     transform: translateY(-2px);
 }
 
@@ -1276,12 +1353,20 @@ section {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 2rem;
-        transition: left 0.3s ease;
+        padding: 2rem 0;
+        /* Short screens (landscape phones, zoomed-in browsers): scroll the menu
+           rather than pushing the last links off-screen */
+        overflow-y: auto;
+        /* visibility removes the closed menu's links from the tab order and the
+           accessibility tree; it flips only after the slide-out finishes */
+        visibility: hidden;
+        transition: left 0.3s ease, visibility 0s linear 0.3s;
     }
 
     .nav-menu.active {
         left: 0;
+        visibility: visible;
+        transition: left 0.3s ease;
     }
 
     .nav-toggle {
@@ -1308,6 +1393,12 @@ section {
 
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    /* Smaller but bold on phones: 19.2px bold still counts as large text */
+    .hero-subtitle-2 {
+        font-size: 1.2rem;
+        font-weight: 700;
     }
 
     .hero-buttons {
@@ -1373,6 +1464,7 @@ section {
 @media (prefers-contrast: high) {
     .btn-primary {
         background: #000;
+        color: #fff;
         border: 2px solid #000;
     }
 
@@ -1396,7 +1488,7 @@ section {
     }
 }
 
-/* Screen-reader-only utility (used by announcePageChange in script.js) */
+/* Screen-reader-only utility */
 .sr-only {
     position: absolute;
     width: 1px;
