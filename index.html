@@ -118,7 +118,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Bump ?v= on styles.css/script.js whenever they change, so cached copies can't pair stale assets with new HTML -->
-    <link rel="stylesheet" href="styles.css?v=12">
+    <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body>
 <!-- Skip to main content for accessibility -->
@@ -141,9 +141,12 @@
 
             <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
                     aria-controls="nav-menu">
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
-                <span class="hamburger"></span>
+                <svg class="menu-icon" width="25" height="25" viewBox="0 0 25 25" fill="currentColor"
+                  aria-hidden="true" focusable="false">
+                  <rect class="top-bar" y="11" width="25" height="3" />
+                  <rect class="middle-bar" y="11" width="25" height="3" />
+                  <rect class="bottom-bar" y="11" width="25" height="3" />
+                </svg>
             </button>
 
             <ul class="nav-menu" id="nav-menu">
@@ -955,6 +958,6 @@
     </div>
 </footer>
 
-<script src="script.js?v=10"></script>
+<script src="script.js?v=11"></script>
 </body>
 </html>

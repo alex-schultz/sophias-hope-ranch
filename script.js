@@ -12,13 +12,11 @@ const closeNavMenu = () => {
         }, 350);
     }
     navMenu.classList.remove('active');
-    navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
 };
 
 navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
 
     // Update ARIA attribute
     const isExpanded = navMenu.classList.contains('active');
