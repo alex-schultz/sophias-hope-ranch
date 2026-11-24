@@ -37,11 +37,3 @@ This site has been tested by the Google Chrome Lighthouse plugin regarding Perfo
 and SEO.
 
 All future changes will be held to the same standards.
-
-## Desktop
-
-![desktop.png](github-assets/desktop.png)
-
-## Mobile
-
-![mobile.png](github-assets/mobile.png)
